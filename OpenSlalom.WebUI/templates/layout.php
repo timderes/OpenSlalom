@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-$stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css');
+$stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstrap.min.css');
 ?>
 <!doctype html>
 <html lang="de">
@@ -12,7 +12,7 @@ $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css'
     <meta name="theme-color" content="#1f84de">
     <title><?= escape($pageTitle ?? 'openSlalom') ?></title>
     <link rel="icon" href="<?= escape(base_url('assets/img/logo.svg')) ?>" type="image/svg+xml">
-    <link rel="stylesheet" href="<?= escape(base_url('assets/css/app.css?v=' . $stylesheetVersion)) ?>">
+    <link rel="stylesheet" href="<?= escape(base_url('assets/css/bootstrap.min.css?v=' . $stylesheetVersion)) ?>">
 </head>
 <body class="<?= escape($pageClass ?? '') ?>">
     <a class="skip-link" href="#content">Zum Inhalt springen</a>
