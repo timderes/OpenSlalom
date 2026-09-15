@@ -56,21 +56,23 @@ $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstra
 
     <?php if ($currentUser !== null && ($pageClass ?? '') !== 'home-page'): ?>
         <?php $currentPath = request_path(); ?>
-        <nav class="internal-menu" aria-label="Interner Bereich">
-            <div class="shell internal-menu-inner">
-                <a class="<?= str_starts_with($currentPath, '/training') ? 'active' : '' ?>" href="<?= escape(base_url('trainings')) ?>">Trainings</a>
+        <nav class="navbar navbar-expand-lg bg-body border-bottom" aria-label="Interner Bereich">
+            <div class="container-fluid">
+                <div class="navbar-nav flex-wrap gap-2">
+                <a class="nav-link <?= str_starts_with($currentPath, '/training') ? 'active' : '' ?>" href="<?= escape(base_url('trainings')) ?>">Trainings</a>
                 <?php if (Auth::canManageMasterData($currentUser)): ?>
-                    <a class="<?= str_starts_with($currentPath, '/statistiken') ? 'active' : '' ?>" href="<?= escape(base_url('statistiken')) ?>">Statistiken</a>
-                    <a class="<?= str_starts_with($currentPath, '/verwaltung/vereine') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/vereine')) ?>">Vereine</a>
-                    <a class="<?= str_starts_with($currentPath, '/verwaltung/fahrer') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/fahrer')) ?>">Fahrer</a>
-                    <a class="<?= str_starts_with($currentPath, '/verwaltung/disziplinen') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/disziplinen')) ?>">Disziplinen</a>
-                    <a class="<?= str_starts_with($currentPath, '/verwaltung/karts') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/karts')) ?>">Karts</a>
-                    <a class="<?= str_starts_with($currentPath, '/verwaltung/wetter') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/wetter')) ?>">Wetter</a>
+                    <a class="nav-link <?= str_starts_with($currentPath, '/statistiken') ? 'active' : '' ?>" href="<?= escape(base_url('statistiken')) ?>">Statistiken</a>
+                    <a class="nav-link <?= str_starts_with($currentPath, '/verwaltung/vereine') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/vereine')) ?>">Vereine</a>
+                    <a class="nav-link <?= str_starts_with($currentPath, '/verwaltung/fahrer') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/fahrer')) ?>">Fahrer</a>
+                    <a class="nav-link <?= str_starts_with($currentPath, '/verwaltung/disziplinen') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/disziplinen')) ?>">Disziplinen</a>
+                    <a class="nav-link <?= str_starts_with($currentPath, '/verwaltung/karts') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/karts')) ?>">Karts</a>
+                    <a class="nav-link <?= str_starts_with($currentPath, '/verwaltung/wetter') ? 'active' : '' ?>" href="<?= escape(base_url('verwaltung/wetter')) ?>">Wetter</a>
                 <?php endif; ?>
                 <?php if (Auth::hasRole($currentUser, 'Administrator')): ?>
-                    <a class="<?= str_starts_with($currentPath, '/admin/benutzer') ? 'active' : '' ?>" href="<?= escape(base_url('admin/benutzer')) ?>">Benutzer</a>
+                    <a class="nav-link <?= str_starts_with($currentPath, '/admin/benutzer') ? 'active' : '' ?>" href="<?= escape(base_url('admin/benutzer')) ?>">Benutzer</a>
                 <?php endif; ?>
-                <a class="<?= str_starts_with($currentPath, '/konto') ? 'active' : '' ?>" href="<?= escape(base_url('konto')) ?>">Eigenes Konto</a>
+                <a class="nav-link <?= str_starts_with($currentPath, '/konto') ? 'active' : '' ?>" href="<?= escape(base_url('konto')) ?>">Eigenes Konto</a>
+                </div>
             </div>
         </nav>
     <?php endif; ?>

@@ -1,15 +1,14 @@
 <?php declare(strict_types=1); ?>
-<section class="shell listing-page master-data-page">
-    <div class="page-heading-row">
-        <div><p class="eyebrow"><span></span> Stammdatenverwaltung</p><h1><?= escape($masterTitle) ?></h1></div>
-        <a class="button button-primary rounded-action" href="<?= escape(base_url('verwaltung/' . $masterType . '/neu')) ?>">+ <?= escape(rtrim($masterTitle, 'e')) ?> anlegen</a>
+<section class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div><p class="text-primary fw-semibold mb-2">Stammdatenverwaltung</p><h1><?= escape($masterTitle) ?></h1></div>
+        <a class="btn btn-primary" href="<?= escape(base_url('verwaltung/' . $masterType . '/neu')) ?>">+ <?= escape(rtrim($masterTitle, 'e')) ?> anlegen</a>
     </div>
     <?php $listPath = 'verwaltung/' . $masterType; $showSearch = true; $showPagination = false; require __DIR__ . '/list-controls.php'; ?>
     <?php if ($items === []): ?>
-        <div class="empty-state"><strong>Keine <?= escape(strtolower($masterTitle)) ?> vorhanden.</strong><span>Lege den ersten Datensatz über den Button oben rechts an.</span></div>
+        <div class="alert alert-info"><strong>Keine <?= escape(strtolower($masterTitle)) ?> vorhanden.</strong> Lege den ersten Datensatz über den Button oben rechts an.</div>
     <?php else: ?>
-        <div class="table-frame master-data-table">
-            <table>
+        <div class="table-responsive"><table class="table table-striped table-hover align-middle">
                 <thead>
                     <?php if ($masterType === 'vereine'): ?><tr><th>Verein</th><th>Mitgliedsnummer</th><th>Ort</th><th>Logo</th><th>Aktionen</th></tr><?php endif; ?>
                     <?php if ($masterType === 'fahrer'): ?><tr><th>Fahrer</th><th>Verein</th><th>Mitgliedsnummer</th><th>Geburtsdatum</th><th>Geschlecht</th><th>Aktionen</th></tr><?php endif; ?>
@@ -25,7 +24,7 @@
                         <?php if ($masterType === 'disziplinen'): ?><td data-label="Disziplin"><strong><?= escape($item['name']) ?></strong></td><td data-label="TF-Strafe"><?= escape(format_penalty((float) $item['tf'])) ?></td><td data-label="PF-Strafe"><?= escape(format_penalty((float) $item['pf'])) ?></td><?php endif; ?>
                         <?php if ($masterType === 'karts'): ?><td data-label="Kart"><strong><?= escape($item['name'] ?? '-') ?></strong></td><td data-label="Verein"><?= escape($item['vereinsname']) ?></td><td data-label="Disziplin"><?= escape($item['disziplin']) ?></td><td data-label="Motor"><?= escape($item['motor'] ?? '-') ?></td><td data-label="Chassis"><?= escape($item['chassis'] ?? '-') ?></td><?php endif; ?>
                         <?php if ($masterType === 'wetter'): ?><td data-label="Bezeichnung"><strong><?= escape($item['name']) ?></strong></td><?php endif; ?>
-                        <td data-label="Aktionen" class="row-actions"><a class="table-action" href="<?= escape(base_url('verwaltung/' . $masterType . '/' . $item['id'] . '/bearbeiten')) ?>">Bearbeiten</a><a class="table-action danger" href="<?= escape(base_url('verwaltung/' . $masterType . '/' . $item['id'] . '/loeschen')) ?>">Löschen</a></td>
+                        <td data-label="Aktionen"><a class="btn btn-sm btn-outline-primary me-1" href="<?= escape(base_url('verwaltung/' . $masterType . '/' . $item['id'] . '/bearbeiten')) ?>">Bearbeiten</a><a class="btn btn-sm btn-outline-danger" href="<?= escape(base_url('verwaltung/' . $masterType . '/' . $item['id'] . '/loeschen')) ?>">Löschen</a></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

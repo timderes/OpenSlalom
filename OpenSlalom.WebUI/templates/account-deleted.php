@@ -1,12 +1,7 @@
 <?php declare(strict_types=1); ?>
-<section class="auth-page shell">
-    <div class="auth-panel account-deleted-panel">
-        <div class="auth-panel-accent danger" aria-hidden="true"></div>
-        <div class="auth-heading">
-            <p class="eyebrow"><span></span> Konto entfernt</p>
-            <h1>Konto gelöscht</h1>
+<section class="container py-5"><div class="row justify-content-center"><div class="col-12 col-lg-8"><div class="card shadow-sm"><div class="card-body p-4 p-md-5">
+        <div class="mb-4"><p class="text-danger fw-semibold mb-2">Konto entfernt</p><h1>Konto gelöscht</h1>
             <p>Dein WebUI-Konto wurde gelöscht. Fahrerprofile, Trainings und Ergebnisse sind davon nicht betroffen.</p>
         </div>
-        <a class="button button-primary auth-submit" href="<?= escape(base_url()) ?>"><span>Zur Startseite</span><i aria-hidden="true">→</i></a>
-    </div>
-</section>
+        <a class="btn btn-primary" href="<?= escape(base_url()) ?>">Zur Startseite</a>
+    </div></div></div></div></section>

@@ -1,28 +1,30 @@
 <?php declare(strict_types=1); ?>
-<section class="hero home-hero">
-    <div class="shell hero-grid">
-        <div class="hero-copy">
-            <p class="eyebrow"><span></span> Kart-Slalom digital organisiert</p>
-            <h1>Training steuern.<br>Leistung sichtbar machen.</h1>
-            <p class="hero-lead">openSlalom verbindet Vorbereitung, doppelte Zeitnahme, Fehlererfassung, Auswertung und veröffentlichte Ergebnisse in einem durchgängigen Ablauf.</p>
-            <div class="hero-actions">
-                <a class="button button-primary rounded-action" href="#funktionen">Funktionsumfang ansehen</a>
-                <a class="home-text-link" href="<?= escape(base_url('registrieren')) ?>">Konto registrieren <span>→</span></a>
+<section class="container-fluid">
+    <div class="row g-4">
+        <div class="col-12 col-lg-6 align-content-center order-1 order-lg-0">
+            <p class="fs-5 text-body-secondary mb-0">Kart-Slalom digital organisiert</p>
+            <h1 class="fw-bold text-body-emphasis mb-4">Training steuern.<br>Leistung sichtbar machen.</h1>
+            <p>openSlalom verbindet Vorbereitung, doppelte Zeitnahme, Fehlererfassung, Auswertung und veröffentlichte Ergebnisse in einem durchgängigen Ablauf.</p>
+            <div class="my-5">
+                <a class="btn btn-primary" href="#funktionen">Funktionsumfang ansehen</a>
+                <a class="btn btn-link link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= escape(base_url('registrieren')) ?>"><symbol aria-hidden="true">&#8594;</symbol> Konto registrieren</a>
             </div>
-            <div class="hero-facts" aria-label="Kernfunktionen">
-                <span><b>2</b> parallele Zeitnahmen</span>
-                <span><b>QR</b> direkter Ergebniszugang</span>
-                <span><b>Live</b> veröffentlichte Trainings</span>
+            <div class="mt-4">
+                <span><b class="text-primary">2</b> parallele Zeitnahmen</span> &mdash;
+                <span><b class="text-primary">QR</b>-Codes für direkten Ergebniszugang</span> &mdash;
+                <span><b class="text-primary">Live</b> Ergebnisse und Auswertung</span>
             </div>
         </div>
-        <div class="hero-visual">
-            <img src="<?= escape(base_url('assets/img/desktop-timing.svg')) ?>" alt="Illustration der Desktop-Zeitnahme mit zwei parallel laufenden Uhren">
-            <div class="hero-visual-note"><span class="status-dot"></span> Lokal erfassen. Sicher synchronisieren.</div>
+        <div class="col-12 col-lg-6 order-0 order-lg-1">
+            <figure class="figure w-100">
+                <img class="figure-img img-fluid rounded-5 shadow-sm" src="<?= escape(base_url('assets/img/desktop-timing.svg')) ?>" alt="Illustration der Desktop-Zeitnahme mit zwei parallel laufenden Uhren">
+                <figcaption class="figure-caption d-none d-lg-block">Lokal erfassen. Sicher synchronisieren.</figcaption>
+            </figure>
         </div>
     </div>
 </section>
-
-<section class="capability-ribbon" aria-label="Ablauf">
+<!--
+<section class="container" aria-label="Ablauf">
     <div class="shell capability-ribbon-grid">
         <div><span>01</span><strong>Vorbereiten</strong><small>Stammdaten, Fahrer, Karts und Trainings</small></div>
         <div><span>02</span><strong>Fahren</strong><small>Runden, Fehler und Stints erfassen</small></div>
@@ -119,7 +121,7 @@
         <p class="eyebrow"><span></span> Sicher verwalten</p>
         <h2>Vom Konto bis zur Veröffentlichung kontrolliert.</h2>
         <p>Die WebUI bringt Benutzerregistrierung, Passwort-Reset, eigene Kontoverwaltung und rollenbasierte CRUD-Bereiche zusammen. Öffentliche Trainings bleiben bewusst von internen Verwaltungsfunktionen getrennt.</p>
-        <a class="button button-primary rounded-action" href="<?= escape(base_url('registrieren')) ?>">Jetzt registrieren</a>
+        <a class="btn btn-primary" href="<?= escape(base_url('registrieren')) ?>">Jetzt registrieren</a>
     </div>
     <div class="management-steps">
         <div><b>01</b><span><strong>Konto erstellen</strong><small>Registrierte Benutzer starten ohne Fahrerzuordnung.</small></span></div>
@@ -134,5 +136,6 @@
         <p class="eyebrow"><span></span> openSlalom</p>
         <h2>Weniger Verwaltung.<br>Mehr Zeit auf der Strecke.</h2>
     </div>
-    <a class="button button-primary rounded-action" href="<?= escape(base_url('registrieren')) ?>">Konto erstellen</a>
+    <a class="btn btn-primary" href="<?= escape(base_url('registrieren')) ?>">Konto erstellen</a>
 </section>
+-->

@@ -5,17 +5,17 @@ $operator = trim((string) ($legal['operator_name'] ?? ''));
 $isConfigured = $operator !== '' && !str_starts_with($operator, '[');
 $email = (string) ($legal['email'] ?? '');
 ?>
-<section class="legal-hero">
-    <div class="shell">
-        <p class="eyebrow"><span></span> Rechtliche Informationen</p>
+<section class="container py-4">
+    <div>
+        <p class="text-primary fw-semibold mb-2">Rechtliche Informationen</p>
         <h1>Impressum</h1>
         <p>Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG).</p>
     </div>
 </section>
 
-<article class="shell legal-content">
+<article class="container pb-5">
     <?php if (!$isConfigured): ?>
-        <div class="legal-configuration-warning" role="alert">
+        <div class="alert alert-warning" role="alert">
             <strong>Betreiberangaben noch nicht konfiguriert</strong>
             <span>Vor einer öffentlichen Bereitstellung müssen die Werte unter <code>legal</code> in <code>config.php</code> vollständig ersetzt und rechtlich geprüft werden.</span>
         </div>

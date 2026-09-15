@@ -11,7 +11,7 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
 ?>
 <div class="training-live" data-auto-refresh="<?= (int) $refreshSeconds ?>">
     <section class="training-hero">
-        <div class="shell">
+        <div class="container">
             <div class="training-crumb"><a href="<?= escape(base_url($trainingBreadcrumbTarget)) ?>">openSlalom</a><span>/</span>Trainingsergebnisse</div>
             <div class="training-title-row">
                 <div>
@@ -41,7 +41,7 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
         </div>
     </section>
 
-    <section class="shell result-content">
+    <section class="container result-content">
         <div class="training-tabs" role="tablist" aria-label="Trainingsansicht">
             <?php if (!$training['is_finished']): ?>
                 <button id="status-tab" type="button" role="tab" aria-selected="true" aria-controls="status-panel" data-training-tab="status">Status</button>
@@ -54,7 +54,7 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
             <section id="status-panel" class="status-tab-panel" role="tabpanel" aria-labelledby="status-tab" data-training-panel="status">
                 <div class="result-heading status-heading">
                     <div>
-                        <p class="eyebrow"><span></span> Live-Status</p>
+                        <p class="text-primary fw-semibold mb-2">Live-Status</p>
                         <h2>Fahrerstatus</h2>
                     </div>
                     <p>Die Anzeige entspricht dem zuletzt gespeicherten Status der Zeitnahme.</p>
@@ -73,13 +73,13 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
                 </div>
 
                 <div class="result-columns status-columns">
-                    <section class="result-section starters-section status-driver-section">
+                    <section class="card shadow-sm p-4 starters-section status-driver-section">
                         <div class="result-heading compact-heading">
                             <div><p class="eyebrow"><span></span> Startreihenfolge</p><h2>Fahrerliste</h2></div>
                             <span class="count-badge"><?= count($status['drivers']) ?></span>
                         </div>
                         <?php if ($status['drivers'] === []): ?>
-                            <div class="empty-state small"><span>Noch keine Fahrer zugeordnet.</span></div>
+                            <div class="alert alert-info"><span>Noch keine Fahrer zugeordnet.</span></div>
                         <?php else: ?>
                             <ol class="starter-list status-driver-list">
                                 <?php foreach ($status['drivers'] as $driver): ?>
@@ -93,12 +93,12 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
                         <?php endif; ?>
                     </section>
 
-                    <section class="result-section stint-section status-stint-section">
+                    <section class="card shadow-sm p-4 stint-section status-stint-section">
                         <div class="result-heading compact-heading">
                             <div><p class="eyebrow"><span></span> Zuletzt gespeichert</p><h2>Letzte zehn Stints</h2></div>
                         </div>
                         <?php if ($status['recent_stints'] === []): ?>
-                            <div class="empty-state small"><span>Noch keine Stints gespeichert.</span></div>
+                            <div class="alert alert-info"><span>Noch keine Stints gespeichert.</span></div>
                         <?php else: ?>
                             <div class="driver-stints status-stints">
                                 <?php foreach ($status['recent_stints'] as $stint): ?>
@@ -118,8 +118,8 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
                                             <span>Gültige Runden <strong><?= (int) $stint['valid_laps'] ?></strong></span>
                                             <span>Durchschnitt <strong><?= escape(format_training_time($stint['average'])) ?></strong></span>
                                         </div>
-                                        <div class="table-frame lap-table">
-                                            <table>
+                                        <div class="table-responsive lap-table">
+                                            <table class="table table-sm align-middle">
                                                 <thead><tr><th>Runde</th><th>Zeit</th><th>Strafe</th><th>PF</th><th>TF</th><th>Status</th></tr></thead>
                                                 <tbody>
                                                 <?php foreach ($stint['laps'] as $lap): ?>
@@ -155,7 +155,7 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
         <section class="result-section leaderboard-section">
             <div class="result-heading">
                 <div>
-                    <p class="eyebrow"><span></span> Zwischenstand</p>
+                    <p class="text-primary fw-semibold mb-2">Zwischenstand</p>
                     <h2>Schnellste Runden</h2>
                 </div>
                 <div class="penalty-legend">
@@ -165,10 +165,10 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
             </div>
 
             <?php if ($leaderboard === []): ?>
-                <div class="empty-state"><strong>Noch keine gewertete Runde.</strong><span>Die Rangliste erscheint, sobald eine gültige Rundenzeit gespeichert wurde.</span></div>
+                <div class="alert alert-info"><strong>Noch keine gewertete Runde.</strong> Die Rangliste erscheint, sobald eine gültige Rundenzeit gespeichert wurde.</div>
             <?php else: ?>
-                <div class="table-frame leaderboard-table">
-                    <table>
+                <div class="table-responsive leaderboard-table">
+                    <table class="table table-striped table-hover align-middle">
                         <thead><tr><th>Pos.</th><th>Fahrer</th><th>Klasse</th><th>Kart</th><th>Bestzeit</th><th>Abstand</th><th>Ø-Zeit</th><th>Runden</th><th>Zuletzt</th></tr></thead>
                         <tbody>
                         <?php foreach ($leaderboard as $row): ?>
@@ -233,8 +233,8 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
                                                 <span>Gültige Runden <strong><?= (int) $stint['valid_laps'] ?></strong></span>
                                                 <span>Durchschnitt <strong><?= escape(format_training_time($stint['average'])) ?></strong></span>
                                             </div>
-                                            <div class="table-frame lap-table">
-                                                <table>
+                                            <div class="table-responsive lap-table">
+                                                <table class="table table-sm align-middle">
                                                     <thead><tr><th>Runde</th><th>Zeit</th><th>Strafe</th><th>PF</th><th>TF</th><th>Status</th></tr></thead>
                                                     <tbody>
                                                     <?php foreach ($stint['laps'] as $lap): ?>
@@ -283,16 +283,16 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
                 <div><strong><?= escape(number_format($statistics['error_free_percent'], 2, '.', '')) ?>%</strong><span>Fehlerfreie Runden</span></div>
             </div>
 
-            <section class="result-section driver-statistics-section">
+            <section class="card shadow-sm p-4 mb-4 driver-statistics-section">
                 <div class="result-heading compact-heading">
                     <div><p class="eyebrow"><span></span> Fahrerübersicht</p><h2>Fahrerdaten</h2></div>
                     <span class="count-badge"><?= count($statistics['drivers']) ?></span>
                 </div>
                 <?php if ($statistics['drivers'] === []): ?>
-                    <div class="empty-state"><strong>Noch keine Trainingsdaten.</strong><span>Die Statistik erscheint, sobald Fahrer einem Training zugeordnet oder Stints gespeichert wurden.</span></div>
+                    <div class="alert alert-info"><strong>Noch keine Trainingsdaten.</strong> Die Statistik erscheint, sobald Fahrer einem Training zugeordnet oder Stints gespeichert wurden.</div>
                 <?php else: ?>
-                    <div class="table-frame driver-statistics-table">
-                        <table>
+                    <div class="table-responsive driver-statistics-table">
+                        <table class="table table-striped table-hover align-middle">
                             <thead><tr><th>Fahrer</th><th>Fahrzeit</th><th>Runden</th><th>Fehlerfreie Runden</th><th>Stints</th><th>PF</th><th>TF</th><th>PF / Runde</th><th>TF / Runde</th></tr></thead>
                             <tbody>
                             <?php foreach ($statistics['drivers'] as $driver): ?>
@@ -314,13 +314,13 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
                 <?php endif; ?>
             </section>
 
-            <section class="result-section training-kart-statistics">
+            <section class="card shadow-sm p-4 mb-4 training-kart-statistics">
                 <div class="result-heading compact-heading"><div><p class="eyebrow"><span></span> Karts</p><h2>Kart-Auswertung</h2></div><span class="count-badge"><?= count($view['karts']) ?></span></div>
                 <?php if ($view['karts'] === []): ?>
-                    <div class="empty-state"><strong>Keine Kartdaten für dieses Training.</strong><span>Kartdaten erscheinen, sobald gespeicherte Stints einem Kart zugeordnet sind.</span></div>
+                    <div class="alert alert-info"><strong>Keine Kartdaten für dieses Training.</strong> Kartdaten erscheinen, sobald gespeicherte Stints einem Kart zugeordnet sind.</div>
                 <?php else: ?>
-                    <div class="table-frame global-kart-statistics-table">
-                        <table>
+                    <div class="table-responsive global-kart-statistics-table">
+                        <table class="table table-striped table-hover align-middle">
                             <thead><tr><th>Kart</th><th>Fahrzeit</th><th>Runden</th><th>Stints</th><th>Fahrer</th><th>PF</th><th>TF</th><th>PF / Runde</th><th>TF / Runde</th></tr></thead>
                             <tbody>
                             <?php foreach ($view['karts'] as $kartIndex => $kart): ?>
@@ -336,7 +336,7 @@ $trainingBreadcrumbTarget = $currentUser === null ? '' : 'trainings';
                                     <td data-label="TF / Runde"><?= escape(number_format($kart['average_tf'], 2, '.', '')) ?></td>
                                 </tr>
                                 <tr id="training-kart-driver-details-<?= $kartIndex ?>" class="kart-driver-expansion" data-kart-details hidden>
-                                    <td colspan="9"><div class="kart-driver-expansion-content"><span class="kart-driver-expansion-label">Fahrerbezogene Auswertung</span><div class="table-frame kart-driver-table"><table><thead><tr><th>Fahrer</th><th>Fahrzeit</th><th>Runden</th><th>Stints</th><th>PF</th><th>TF</th><th>PF / Runde</th><th>TF / Runde</th></tr></thead><tbody>
+                                    <td colspan="9"><div class="p-3"><span class="fw-semibold">Fahrerbezogene Auswertung</span><div class="table-responsive kart-driver-table"><table class="table table-sm align-middle"><thead><tr><th>Fahrer</th><th>Fahrzeit</th><th>Runden</th><th>Stints</th><th>PF</th><th>TF</th><th>PF / Runde</th><th>TF / Runde</th></tr></thead><tbody>
                                     <?php foreach ($kart['drivers'] as $driver): ?>
                                         <tr><td data-label="Fahrer"><strong><?= escape($driver['name']) ?></strong></td><td data-label="Fahrzeit"><strong class="time-value duration-value"><?= escape(format_duration($driver['seconds'])) ?></strong></td><td data-label="Runden"><?= (int) $driver['rounds'] ?></td><td data-label="Stints"><?= (int) $driver['stints'] ?></td><td data-label="PF"><?= (int) $driver['pf'] ?></td><td data-label="TF"><?= (int) $driver['tf'] ?></td><td data-label="PF / Runde"><?= escape(number_format($driver['average_pf'], 2, '.', '')) ?></td><td data-label="TF / Runde"><?= escape(number_format($driver['average_tf'], 2, '.', '')) ?></td></tr>
                                     <?php endforeach; ?>
