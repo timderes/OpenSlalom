@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 $operator = trim((string) ($legal['operator_name'] ?? ''));
@@ -26,9 +27,9 @@ $email = (string) ($legal['email'] ?? '');
         <address>
             <strong><?= escape($operator !== '' ? $operator : '[Vollständiger Name oder Firmenname]') ?><?= !empty($legal['legal_form']) ? ' ' . escape($legal['legal_form']) : '' ?></strong><br>
             <?php if (!empty($legal['represented_by'])): ?>Vertreten durch: <?= escape($legal['represented_by']) ?><br><?php endif; ?>
-            <?= escape($legal['street'] ?? '[Straße und Hausnummer]') ?><br>
-            <?= escape($legal['postal_code'] ?? '[PLZ]') ?> <?= escape($legal['city'] ?? '[Ort]') ?><br>
-            <?= escape($legal['country'] ?? 'Deutschland') ?>
+        <?= escape($legal['street'] ?? '[Straße und Hausnummer]') ?><br>
+        <?= escape($legal['postal_code'] ?? '[PLZ]') ?> <?= escape($legal['city'] ?? '[Ort]') ?><br>
+        <?= escape($legal['country'] ?? 'Deutschland') ?>
         </address>
     </section>
 
@@ -85,5 +86,5 @@ $email = (string) ($legal['email'] ?? '');
         <p>Die durch den Seitenbetreiber erstellten Inhalte, Gestaltungen, Grafiken und Softwarebestandteile unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der gesetzlichen Schranken bedürfen der vorherigen Zustimmung des jeweiligen Rechteinhabers. Inhalte Dritter werden als solche gekennzeichnet. Gesetzlich zulässige Nutzungen bleiben unberührt.</p>
     </section>
 
-    <p class="legal-updated">Stand: 3. August 2026</p>
+    <p>Stand: 3. August 2026</p>
 </article>

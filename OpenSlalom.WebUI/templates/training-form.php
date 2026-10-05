@@ -1,17 +1,18 @@
 <?php
+
 declare(strict_types=1);
 
 $formAction = $editMode ? 'training/' . $trainingUuid : 'trainings';
 ?>
-<section class="container py-4">
-    <div class="mb-4">
+<section class="py-2">
+    <div class="page-header">
         <div>
-            <p class="text-primary fw-semibold mb-2">Trainingsverwaltung</p>
-            <h1><?= $editMode ? 'Training bearbeiten' : 'Training anlegen' ?></h1>
+            <p class="eyebrow mb-2">Trainingsverwaltung</p>
+            <h1 class="display-6 fw-bold"><?= $editMode ? 'Training bearbeiten' : 'Training anlegen' ?></h1>
         </div>
     </div>
 
-    <div class="card shadow-sm p-4">
+    <div class="surface-card rounded-4 p-4 p-lg-5">
         <?php if (isset($formError)): ?><div class="alert alert-danger" role="alert"><?= escape($formError) ?></div><?php endif; ?>
         <form class="row g-3" action="<?= escape(base_url($formAction)) ?>" method="post">
             <input type="hidden" name="csrf_token" value="<?= escape(csrf_token()) ?>">

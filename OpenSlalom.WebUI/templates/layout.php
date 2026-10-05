@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstrap.min.css');
+$appStylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css');
 ?>
 <!doctype html>
 <html lang="de">
@@ -13,12 +14,13 @@ $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstra
     <title><?= escape($pageTitle ?? 'openSlalom') ?></title>
     <link rel="icon" href="<?= escape(base_url('assets/img/logo.svg')) ?>" type="image/svg+xml">
     <link rel="stylesheet" href="<?= escape(base_url('assets/css/bootstrap.min.css?v=' . $stylesheetVersion)) ?>">
+    <link rel="stylesheet" href="<?= escape(base_url('assets/css/app.css?v=' . $appStylesheetVersion)) ?>">
 </head>
-<body class="<?= escape($pageClass ?? '') ?>" data-bs-theme="auto">
+<body class="<?= escape($pageClass ?? '') ?>" data-bs-theme="light">
     <a class="visually-hidden-focusable" href="#content">Zum Inhalt springen</a>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm sticky-top" aria-label="Navigation">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg app-navbar shadow-sm sticky-top" aria-label="Hauptnavigation">
+    <div class="container page-shell">
         <a class="navbar-brand" href="<?= escape(base_url()) ?>" aria-label="openSlalom Startseite">
             <img src="<?= escape(base_url('assets/img/logo.svg')) ?>" alt="" width="38" height="38">
             <span class="ms-1">openSlalom</span>
@@ -30,21 +32,22 @@ $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstra
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <!--
-                TODO: add nav items here, when the db connection works,
-                so we can see the items in the nav bar
-                -->
+                <?php if ($currentUser !== null): ?>
+                    <li class="nav-item"><a class="nav-link <?= str_starts_with(request_path(), '/training') ? 'active' : '' ?>" href="<?= escape(base_url('trainings')) ?>">Trainings</a></li>
+                    <?php if (Auth::canManageMasterData($currentUser)): ?>
+                        <li class="nav-item"><a class="nav-link <?= str_starts_with(request_path(), '/statistiken') ? 'active' : '' ?>" href="<?= escape(base_url('statistiken')) ?>">Statistiken</a></li>
+                    <?php endif; ?>
+                <?php endif; ?>
             </ul>
         
         <?php if ($currentUser === null): ?>
             <a class="btn btn-primary" href="<?= escape(base_url('login')) ?>">
-                <symbol aria-hidden="true">&#8594;</symbol>
                 Anmelden
 
             </a>
             
             <?php else: ?>
-                <a href="<?= escape(base_url('konto')) ?>"><?= escape($currentUser['username']) ?></a>
+                <a class="nav-link me-2" href="<?= escape(base_url('konto')) ?>"><?= escape($currentUser['username']) ?></a>
                     <form action="<?= escape(base_url('logout')) ?>" method="post">
                         <input type="hidden" name="csrf_token" value="<?= escape(csrf_token()) ?>">
                         <button class="btn btn-primary" type="submit">Abmelden</button>
@@ -57,7 +60,7 @@ $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstra
     <?php if ($currentUser !== null && ($pageClass ?? '') !== 'home-page'): ?>
         <?php $currentPath = request_path(); ?>
         <nav class="navbar navbar-expand-lg bg-body border-bottom" aria-label="Interner Bereich">
-            <div class="container-fluid">
+            <div class="container page-shell">
                 <div class="navbar-nav flex-wrap gap-2">
                 <a class="nav-link <?= str_starts_with($currentPath, '/training') ? 'active' : '' ?>" href="<?= escape(base_url('trainings')) ?>">Trainings</a>
                 <?php if (Auth::canManageMasterData($currentUser)): ?>
@@ -77,14 +80,14 @@ $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstra
         </nav>
     <?php endif; ?>
 
-    <main class="my-5">
+    <main id="content" class="page-shell container my-5">
 
         <?php require_once $contentTemplate; ?>
   
     </main>
 
     <footer class="text-bg-primary">
-        <div class="container p-5 text-center text-sm-start">
+        <div class="container page-shell p-5 text-center text-sm-start">
             <div class="row g-4">
 
                 <div class="col-12 col-lg-6">

@@ -1,5 +1,8 @@
-<?php declare(strict_types=1); ?>
-<?php $showSearch ??= true; $showPagination ??= true; ?>
+<?php
+
+declare(strict_types=1); ?>
+<?php $showSearch ??= true;
+$showPagination ??= true; ?>
 <?php if ($showSearch): ?>
     <div class="d-flex flex-wrap gap-3 align-items-end mb-4">
         <form class="d-flex flex-wrap gap-2" action="<?= escape(base_url($listPath)) ?>" method="get">
@@ -11,11 +14,13 @@
     </div>
 <?php endif; ?>
 <?php if ($showPagination && $pagination['pages'] > 1): ?>
-    <nav aria-label="Seitennavigation"><ul class="pagination">
-        <?php if ($pagination['page'] > 1): ?><li class="page-item"><a class="page-link" href="<?= escape(list_page_url($listPath, $pagination['page'] - 1, $search)) ?>">← Zurück</a></li><?php endif; ?>
-        <?php for ($page = max(1, $pagination['page'] - 2); $page <= min($pagination['pages'], $pagination['page'] + 2); $page++): ?>
-            <li class="page-item <?= $page === $pagination['page'] ? 'active' : '' ?>"><a class="page-link" href="<?= escape(list_page_url($listPath, $page, $search)) ?>"><?= $page ?></a></li>
-        <?php endfor; ?>
-        <?php if ($pagination['page'] < $pagination['pages']): ?><li class="page-item"><a class="page-link" href="<?= escape(list_page_url($listPath, $pagination['page'] + 1, $search)) ?>">Weiter →</a></li><?php endif; ?>
-    </ul></nav>
+    <nav aria-label="Seitennavigation">
+        <ul class="pagination">
+            <?php if ($pagination['page'] > 1): ?><li class="page-item"><a class="page-link" href="<?= escape(list_page_url($listPath, $pagination['page'] - 1, $search)) ?>">← Zurück</a></li><?php endif; ?>
+            <?php for ($page = max(1, $pagination['page'] - 2); $page <= min($pagination['pages'], $pagination['page'] + 2); $page++): ?>
+                <li class="page-item <?= $page === $pagination['page'] ? 'active' : '' ?>"><a class="page-link" href="<?= escape(list_page_url($listPath, $page, $search)) ?>"><?= $page ?></a></li>
+            <?php endfor; ?>
+            <?php if ($pagination['page'] < $pagination['pages']): ?><li class="page-item"><a class="page-link" href="<?= escape(list_page_url($listPath, $pagination['page'] + 1, $search)) ?>">Weiter →</a></li><?php endif; ?>
+        </ul>
+    </nav>
 <?php endif; ?>

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 $operator = trim((string) ($legal['operator_name'] ?? ''));
@@ -108,5 +109,5 @@ $authorityUrl = (string) ($legal['supervisory_authority_url'] ?? '');
         <p>Diese Datenschutzerklärung wird angepasst, wenn sich Funktionen, Rechtsgrundlagen, eingesetzte Dienstleister oder gesetzliche Anforderungen ändern. Es gilt die auf dieser Seite veröffentlichte Fassung.</p>
     </section>
 
-    <p class="legal-updated">Stand: 3. August 2026</p>
+    <p>Stand: 3. August 2026</p>
 </article>

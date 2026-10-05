@@ -1,141 +1,44 @@
 <?php declare(strict_types=1); ?>
-<section class="container-fluid">
+
+<section class="hero-panel p-4 p-lg-5">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+            <p class="eyebrow text-white-50 mb-3">Race control für Kart-Slalom</p>
+            <h1 class="display-4 fw-bold mb-3">Training steuern. Leistung sichtbar machen.</h1>
+            <p class="lead text-white-50 mb-4">openSlalom verbindet Trainingsorganisation, doppelte Zeitnahme, Fehlererfassung und veröffentlichte Ergebnisse in einem durchgängigen Ablauf.</p>
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-light btn-lg" href="<?= escape(base_url('registrieren')) ?>">Konto registrieren</a>
+                <a class="btn btn-outline-light btn-lg" href="<?= escape(base_url('login')) ?>">Anmelden</a>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="bg-white bg-opacity-10 rounded-4 p-4">
+                <div class="d-flex justify-content-between align-items-center border-bottom border-white border-opacity-25 pb-3 mb-3">
+                    <span class="small text-uppercase fw-bold text-white-50">Live timing</span>
+                    <span class="badge text-bg-success"><span class="status-dot"></span>Aktiv</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-end">
+                    <div><span class="d-block text-white-50 small">Schnellste Runde</span><strong class="display-6 timing-value text-white">01:23.456</strong></div>
+                    <span class="badge text-bg-warning">+ 3.000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5" aria-labelledby="features-heading">
+    <div class="row align-items-end g-3 mb-4">
+        <div class="col-md-8"><p class="eyebrow mb-2">Für die Strecke entwickelt</p><h2 id="features-heading" class="fw-bold mb-0">Alles Wichtige auf einen Blick.</h2></div>
+        <div class="col-md-4 text-md-end text-body-secondary">Von der Starterliste bis zur Auswertung.</div>
+    </div>
     <div class="row g-4">
-        <div class="col-12 col-lg-6 align-content-center order-1 order-lg-0">
-            <p class="fs-5 text-body-secondary mb-0">Kart-Slalom digital organisiert</p>
-            <h1 class="fw-bold text-body-emphasis mb-4">Training steuern.<br>Leistung sichtbar machen.</h1>
-            <p>openSlalom verbindet Vorbereitung, doppelte Zeitnahme, Fehlererfassung, Auswertung und veröffentlichte Ergebnisse in einem durchgängigen Ablauf.</p>
-            <div class="my-5">
-                <a class="btn btn-primary" href="#funktionen">Funktionsumfang ansehen</a>
-                <a class="btn btn-link link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?= escape(base_url('registrieren')) ?>"><symbol aria-hidden="true">&#8594;</symbol> Konto registrieren</a>
-            </div>
-            <div class="mt-4">
-                <span><b class="text-primary">2</b> parallele Zeitnahmen</span> &mdash;
-                <span><b class="text-primary">QR</b>-Codes für direkten Ergebniszugang</span> &mdash;
-                <span><b class="text-primary">Live</b> Ergebnisse und Auswertung</span>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6 order-0 order-lg-1">
-            <figure class="figure w-100">
-                <img class="figure-img img-fluid rounded-5 shadow-sm" src="<?= escape(base_url('assets/img/desktop-timing.svg')) ?>" alt="Illustration der Desktop-Zeitnahme mit zwei parallel laufenden Uhren">
-                <figcaption class="figure-caption d-none d-lg-block">Lokal erfassen. Sicher synchronisieren.</figcaption>
-            </figure>
-        </div>
-    </div>
-</section>
-<!--
-<section class="container" aria-label="Ablauf">
-    <div class="shell capability-ribbon-grid">
-        <div><span>01</span><strong>Vorbereiten</strong><small>Stammdaten, Fahrer, Karts und Trainings</small></div>
-        <div><span>02</span><strong>Fahren</strong><small>Runden, Fehler und Stints erfassen</small></div>
-        <div><span>03</span><strong>Auswerten</strong><small>Bestzeiten, Karts und Statistiken</small></div>
-        <div><span>04</span><strong>Teilen</strong><small>Web-Ergebnisse per UUID und QR-Code</small></div>
+        <div class="col-md-4"><article class="surface-card rounded-4 p-4"><span class="badge text-bg-primary mb-4">01 · Zeitnahme</span><h3 class="h4">Präzise Runden</h3><p class="text-body-secondary mb-0">Zwei unabhängige Zeitnahmestationen, Stints und Strafzeiten bleiben nachvollziehbar.</p></article></div>
+        <div class="col-md-4"><article class="surface-card rounded-4 p-4"><span class="badge text-bg-success mb-4">02 · Ergebnisse</span><h3 class="h4">Klarer Zwischenstand</h3><p class="text-body-secondary mb-0">Platzierung, Fahrer, Fehler und Gesamtzeit sind auf Desktop und Smartphone schnell erfassbar.</p></article></div>
+        <div class="col-md-4"><article class="surface-card rounded-4 p-4"><span class="badge text-bg-warning mb-4">03 · Verwaltung</span><h3 class="h4">Saubere Stammdaten</h3><p class="text-body-secondary mb-0">Vereine, Fahrer, Disziplinen, Karts und Trainings bleiben zentral organisiert.</p></article></div>
     </div>
 </section>
 
-<section id="funktionen" class="home-section shell">
-    <div class="section-heading home-heading">
-        <p class="eyebrow"><span></span> Der Trainingsalltag in einer Anwendung</p>
-        <h2>Von der Starterliste bis zur veröffentlichten Runde.</h2>
-        <p>Die Desktop-App bleibt schnell und zuverlässig an der Strecke. Die WebUI macht Ergebnisse, Auswertungen und Verwaltung dort verfügbar, wo sie gebraucht werden.</p>
-    </div>
-
-    <div class="home-feature-grid">
-        <article class="home-feature feature-timing">
-            <span class="home-feature-number">01</span>
-            <div class="home-icon timer-icon" aria-hidden="true">00</div>
-            <h3>Präzise Zeitnahme</h3>
-            <p>Zwei Zeitnahmestationen laufen unabhängig. Start, Runde, Stop und Stint-Speicherung sind für den Ablauf am Platz optimiert.</p>
-            <ul><li>Shortcut-gesteuerte Bedienung</li><li>Rundenziele und Überschreiten</li><li>Parallele Fahrerzuweisung</li></ul>
-        </article>
-        <article class="home-feature feature-errors">
-            <span class="home-feature-number">02</span>
-            <div class="home-icon cone-icon" aria-hidden="true">PF</div>
-            <h3>Fehler transparent erfassen</h3>
-            <p>Pylonen- und Torfehler, ungültige Runden und Strafzeiten bleiben vom einzelnen Lauf bis zur Rangliste nachvollziehbar.</p>
-            <ul><li>PF und TF pro Runde</li><li>Effektive Zeiten mit Strafen</li><li>Nachträgliche Korrekturen</li></ul>
-        </article>
-        <article class="home-feature feature-stints">
-            <span class="home-feature-number">03</span>
-            <div class="home-icon lap-icon" aria-hidden="true">↻</div>
-            <h3>Stints im Kontext</h3>
-            <p>Jeder gespeicherte Stint verbindet Fahrer, Kart, Altersklasse, Zeitpunkt und alle gefahrenen Runden.</p>
-            <ul><li>Gesamt- und Durchschnittszeit</li><li>Historische Kartzuordnung</li><li>Komplette Rundendetails</li></ul>
-        </article>
-        <article class="home-feature feature-management">
-            <span class="home-feature-number">04</span>
-            <div class="home-icon grid-icon" aria-hidden="true">+</div>
-            <h3>Stammdaten sauber verwalten</h3>
-            <p>Vereine, Fahrer, Disziplinen mit Altersklassen, Karts und Wetter bilden eine konsistente Grundlage für jedes Training.</p>
-            <ul><li>Altersklassen ohne Überschneidungen</li><li>Vereinslogos und Mitgliedsnummern</li><li>Soft-Delete statt Datenverlust</li></ul>
-        </article>
-    </div>
+<section class="row g-4 align-items-stretch" aria-labelledby="workflow-heading">
+    <div class="col-lg-7"><div class="surface-card rounded-4 p-4 p-lg-5 h-100"><p class="eyebrow">Der Ablauf</p><h2 id="workflow-heading" class="fw-bold">Weniger Verwaltung. Mehr Zeit auf der Strecke.</h2><p class="text-body-secondary">Die Desktop-App bleibt schnell an der Strecke. Die WebUI macht Ergebnisse, Auswertungen und Verwaltung dort verfügbar, wo sie gebraucht werden.</p><div class="row g-3 mt-2"><div class="col-sm-4"><strong class="d-block fs-3 text-primary">01</strong><span class="small text-body-secondary">Vorbereiten</span></div><div class="col-sm-4"><strong class="d-block fs-3 text-primary">02</strong><span class="small text-body-secondary">Fahren</span></div><div class="col-sm-4"><strong class="d-block fs-3 text-primary">03</strong><span class="small text-body-secondary">Auswerten</span></div></div></div></div>
+    <div class="col-lg-5"><div class="surface-card rounded-4 p-4 p-lg-5 h-100"><p class="eyebrow">Sicher und kontrolliert</p><h2 class="h3 fw-bold">Rollen dort, wo sie wirken.</h2><p class="text-body-secondary">Öffentliche Ergebnisse bleiben schreibgeschützt. Verwaltungsfunktionen sind rollenbasiert geschützt.</p><a class="btn btn-primary" href="<?= escape(base_url('registrieren')) ?>">Jetzt starten</a></div></div>
 </section>
-
-<section class="results-showcase">
-    <div class="shell results-showcase-grid">
-        <div class="results-showcase-visual"><img src="<?= escape(base_url('assets/img/web-results.svg')) ?>" alt="Illustration einer veröffentlichten Trainingsauswertung im Web"></div>
-        <div class="results-showcase-copy">
-            <p class="eyebrow light"><span></span> Ergebnisse im Web</p>
-            <h2>Ein Training. Ein Link. Ein klarer Zwischenstand.</h2>
-            <p>Veröffentlichte Trainings erhalten eine eindeutige UUID. Per QR-Code oder Trainingslink können Fahrer und Zuschauer Bestzeiten, Stints, Runden und Statistiken direkt aufrufen.</p>
-            <div class="results-checks">
-                <span>Öffentliche Ergebnisse mit Datenschutz</span>
-                <span>Vornamen sichtbar, Nachnamen geschützt</span>
-                <span>Vollständige Daten für berechtigte Benutzer</span>
-                <span>Aktualisierung während laufender Trainings</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="home-section shell">
-    <div class="section-heading home-heading compact-home-heading">
-        <p class="eyebrow"><span></span> Mehr als eine Ergebnisliste</p>
-        <h2>Auswertungen, die den nächsten Schritt zeigen.</h2>
-    </div>
-    <div class="insight-layout">
-        <article class="insight-card insight-primary">
-            <div class="insight-head"><span>STATISTIKEN</span><b>Aktuelles Jahr</b></div>
-            <div class="insight-metric"><strong>284</strong><span>zeitgemessene Runden</span></div>
-            <div class="bar-chart" aria-hidden="true"><i style="height:40%"></i><i style="height:66%"></i><i style="height:53%"></i><i style="height:82%"></i><i style="height:96%"></i><i style="height:72%"></i><i style="height:88%"></i></div>
-            <p>Globale Statistik mit frei wählbarem Zeitraum, Fahrerwerten und Kart-Auswertung.</p>
-        </article>
-        <article class="insight-card">
-            <span class="insight-label">KART-AUSWERTUNG</span>
-            <h3>Welches Kart wurde wie gefahren?</h3>
-            <p>Fahrzeit, Runden, Stints, Fehler und Fahrer können pro Kart und bis auf einzelne Fahrer aufgeschlüsselt werden.</p>
-            <div class="mini-list"><span>Kart 7 <b>12 Stints</b></span><span>Kart 3 <b>9 Stints</b></span><span>Kart 4 <b>7 Stints</b></span></div>
-        </article>
-        <article class="insight-card">
-            <span class="insight-label">BERECHTIGUNGEN</span>
-            <h3>Rollen dort, wo sie wirken.</h3>
-            <p>Administratoren, Trainingsleiter, Fahrer und registrierte Benutzer erhalten nur die Funktionen und Trainings, die für sie bestimmt sind.</p>
-            <div class="role-pills"><span>Admin</span><span>Leitung</span><span>Fahrer</span><span>Registriert</span></div>
-        </article>
-    </div>
-</section>
-
-<section class="home-section shell home-management-section">
-    <div class="management-copy">
-        <p class="eyebrow"><span></span> Sicher verwalten</p>
-        <h2>Vom Konto bis zur Veröffentlichung kontrolliert.</h2>
-        <p>Die WebUI bringt Benutzerregistrierung, Passwort-Reset, eigene Kontoverwaltung und rollenbasierte CRUD-Bereiche zusammen. Öffentliche Trainings bleiben bewusst von internen Verwaltungsfunktionen getrennt.</p>
-        <a class="btn btn-primary" href="<?= escape(base_url('registrieren')) ?>">Jetzt registrieren</a>
-    </div>
-    <div class="management-steps">
-        <div><b>01</b><span><strong>Konto erstellen</strong><small>Registrierte Benutzer starten ohne Fahrerzuordnung.</small></span></div>
-        <div><b>02</b><span><strong>Rolle zuweisen</strong><small>Administratoren ordnen Rechte und Fahrerprofil zu.</small></span></div>
-        <div><b>03</b><span><strong>Training freigeben</strong><small>Öffentliche Ergebnisse nur bewusst veröffentlichen.</small></span></div>
-    </div>
-</section>
-
-<section class="closing home-closing shell">
-    <img src="<?= escape(base_url('assets/img/logo.svg')) ?>" alt="" width="86" height="86">
-    <div>
-        <p class="eyebrow"><span></span> openSlalom</p>
-        <h2>Weniger Verwaltung.<br>Mehr Zeit auf der Strecke.</h2>
-    </div>
-    <a class="btn btn-primary" href="<?= escape(base_url('registrieren')) ?>">Konto erstellen</a>
-</section>
--->
