@@ -56,9 +56,45 @@ public partial class MainWindow
         return state;
     }
 
+    private const string InitialTrainingStopwatchText = "00.000";
+
     private static string FormatTrainingTime(TimeSpan elapsed)
     {
-        return $"{(int)elapsed.TotalSeconds:00}.{elapsed.Milliseconds:000}";
+        var normalized = NormalizeElapsedForDisplay(elapsed);
+        var totalMinutes = (int)normalized.TotalMinutes;
+        if (totalMinutes > 0)
+        {
+            return string.Create(CultureInfo.InvariantCulture, $"{totalMinutes}:{normalized.Seconds:00}.{normalized.Milliseconds:000}");
+        }
+
+        return string.Create(CultureInfo.InvariantCulture, $"{(int)normalized.TotalSeconds}.{normalized.Milliseconds:000}");
+    }
+
+    private static string FormatRunningTrainingTime(TimeSpan elapsed)
+    {
+        var roundedSeconds = Math.Round(Math.Max(0d, elapsed.TotalSeconds), 1, MidpointRounding.AwayFromZero);
+        var totalMinutes = (int)(roundedSeconds / 60d);
+        var seconds = roundedSeconds - (totalMinutes * 60d);
+        if (totalMinutes > 0)
+        {
+            return string.Create(CultureInfo.InvariantCulture, $"{totalMinutes}:{seconds:00.0}");
+        }
+
+        return roundedSeconds.ToString("0.0", CultureInfo.InvariantCulture);
+    }
+
+    private static TimeSpan NormalizeElapsedForDisplay(TimeSpan elapsed)
+    {
+        var milliseconds = Math.Round(Math.Max(0d, elapsed.TotalMilliseconds), 0, MidpointRounding.AwayFromZero);
+        return TimeSpan.FromMilliseconds(milliseconds);
+    }
+
+    private static void SetTextIfChanged(TextBlock textBlock, string value)
+    {
+        if (!string.Equals(textBlock.Text, value, StringComparison.Ordinal))
+        {
+            textBlock.Text = value;
+        }
     }
 
     /// <summary>
@@ -198,7 +234,7 @@ public partial class MainWindow
             StopTrainingStopwatchTimerIfIdle();
 
             TrainingLapTimeItems.Clear();
-            TrainingsViewControl.TrainingStopwatchTextBlock.Text = "00.000";
+            SetTextIfChanged(TrainingsViewControl.TrainingStopwatchTextBlock, InitialTrainingStopwatchText);
             UpdateTrainingLapSummaryDisplay();
             UpdateTrainingLapProgressDisplay();
             UpdateTrainingStopwatchButtonsState();
@@ -246,7 +282,7 @@ public partial class MainWindow
         StopTrainingStopwatchTimerIfIdle();
 
         TrainingLapTimeItems.Clear();
-        TrainingsViewControl.TrainingStopwatchTextBlock.Text = "00.000";
+        SetTextIfChanged(TrainingsViewControl.TrainingStopwatchTextBlock, InitialTrainingStopwatchText);
         UpdateTrainingLapSummaryDisplay();
         UpdateTrainingLapProgressDisplay();
         UpdateTrainingStopwatchButtonsState();
@@ -380,8 +416,7 @@ public partial class MainWindow
     {
         if (_trainingStopwatchContext is null)
         {
-            TrainingsViewControl.TrainingStopwatchTextBlock.Text = "00.000";
-            UpdateTrainingLapProgressDisplay();
+            SetTextIfChanged(TrainingsViewControl.TrainingStopwatchTextBlock, InitialTrainingStopwatchText);
             return;
         }
 
@@ -392,13 +427,36 @@ public partial class MainWindow
             currentLapElapsed = TimeSpan.Zero;
         }
 
-        TrainingsViewControl.TrainingStopwatchTextBlock.Text = FormatTrainingTime(currentLapElapsed);
+        var displayText = GetTrainingStopwatchDisplayText(state, currentLapElapsed);
+        SetTextIfChanged(TrainingsViewControl.TrainingStopwatchTextBlock, displayText);
         if (state.ActiveLap is not null && state.Stopwatch.IsRunning)
         {
-            state.ActiveLap.Rundenzeit = currentLapElapsed;
-            state.ActiveLap.RundenzeitText = FormatTrainingTime(currentLapElapsed);
+            var activeLapDisplay = FormatRunningTrainingTime(currentLapElapsed);
+            if (!string.Equals(state.ActiveLap.RundenzeitText, activeLapDisplay, StringComparison.Ordinal))
+            {
+                state.ActiveLap.RundenzeitText = activeLapDisplay;
+            }
         }
-        UpdateTrainingLapProgressDisplay();
+    }
+
+    private static string GetTrainingStopwatchDisplayText(TrainingStintState state, TimeSpan currentLapElapsed)
+    {
+        if (state.Stopwatch.IsRunning)
+        {
+            return FormatRunningTrainingTime(currentLapElapsed);
+        }
+
+        if (state.LapRecords.Count > 0)
+        {
+            return FormatTrainingTime(state.LapRecords[^1].Rundenzeit);
+        }
+
+        if (currentLapElapsed == TimeSpan.Zero)
+        {
+            return InitialTrainingStopwatchText;
+        }
+
+        return FormatTrainingTime(currentLapElapsed);
     }
 
     private void UpdateTrainingStopwatchButtonsState()
