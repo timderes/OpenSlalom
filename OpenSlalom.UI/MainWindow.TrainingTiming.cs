@@ -134,7 +134,7 @@ public partial class MainWindow
 
         if (_selectedTrainingDetailId is null || _trainingStopwatchContext is null)
         {
-            TrainingsViewControl.TrainingLapCounterTextBlock.Text = "Runde: -/-";
+            SetTextIfChanged(TrainingsViewControl.TrainingLapCounterTextBlock, "Runde: -/-");
             return;
         }
 
@@ -144,9 +144,10 @@ public partial class MainWindow
             ? roundsTarget
             : state.LapRecords.Count + 1;
 
-        TrainingsViewControl.TrainingLapCounterTextBlock.Text = roundsTarget > 0
+        var progressText = roundsTarget > 0
             ? $"Runde: {currentLap}/{roundsTarget}"
             : $"Runde: {currentLap}/-";
+        SetTextIfChanged(TrainingsViewControl.TrainingLapCounterTextBlock, progressText);
     }
 
     private void UpdateTrainingLapSummaryDisplay()
@@ -431,12 +432,14 @@ public partial class MainWindow
         SetTextIfChanged(TrainingsViewControl.TrainingStopwatchTextBlock, displayText);
         if (state.ActiveLap is not null && state.Stopwatch.IsRunning)
         {
+            state.ActiveLap.Rundenzeit = currentLapElapsed;
             var activeLapDisplay = FormatRunningTrainingTime(currentLapElapsed);
             if (!string.Equals(state.ActiveLap.RundenzeitText, activeLapDisplay, StringComparison.Ordinal))
             {
                 state.ActiveLap.RundenzeitText = activeLapDisplay;
             }
         }
+        UpdateTrainingLapProgressDisplay();
     }
 
     private static string GetTrainingStopwatchDisplayText(TrainingStintState state, TimeSpan currentLapElapsed)
