@@ -78,17 +78,16 @@ $customStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.cs
         <?php require $contentTemplate; ?>
     </main>
 
-    <footer class="site-footer">
-        <div class="shell footer-inner">
-            <div>
-                <strong>openSlalom</strong>
-                <span>Digitale Trainingsorganisation für den Kart-Slalom.</span>
-            </div>
-            <nav class="footer-links" aria-label="Rechtliche Informationen">
-                <a href="<?= escape(base_url('impressum')) ?>">Impressum</a>
-                <a href="<?= escape(base_url('datenschutz')) ?>">Datenschutz</a>
-            </nav>
+    <footer class="border-top px-3 px-lg-4 py-4 py-lg-5 text-center text-lg-start vstack gap-4 flex-lg-row align-items-center justify-content-lg-between">
+        <div class="d-flex flex-column">
+            <strong class="fs-3 text-body-emphasis">openSlalom</strong>
+            <span>Digitale Trainingsorganisation für den Kart-Slalom.</span>
         </div>
+
+        <nav class="nav justify-content-center justify-content-lg-start" aria-label="Rechtliche Informationen">
+            <a class="nav-link" href="<?= escape(base_url('datenschutz')) ?>">Datenschutz</a>
+            <a class="nav-link" href="<?= escape(base_url('impressum')) ?>">Impressum</a>
+        </nav>
     </footer>
 
     <script src="<?= escape(base_url('assets/js/bootstrap.bundle.min.js?v=' . $bootstrapJavascriptVersion)) ?>" defer></script>
