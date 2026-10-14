@@ -3,11 +3,14 @@
 declare(strict_types=1);
 
 $bootstrapStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstrap.min.css');
+$bootstrapIconsVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstrap-icons.min.css');
 $bootstrapJavascriptVersion = (string) filemtime(dirname(__DIR__) . '/assets/js/bootstrap.bundle.min.js');
 $customStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css');
+
 ?>
+
 <!doctype html>
-<html lang="de">
+<html lang="de" data-bs-theme="light">
 
 <head>
     <meta charset="utf-8">
@@ -17,6 +20,7 @@ $customStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.cs
     <title><?= escape($pageTitle ?? 'openSlalom') ?></title>
     <link rel="icon" href="<?= escape(base_url('assets/img/logo.svg')) ?>" type="image/svg+xml">
     <link rel="stylesheet" href="<?= escape(base_url('assets/css/bootstrap.min.css?v=' . $bootstrapStylesVersion)) ?>">
+    <link rel="stylesheet" href="<?= escape(base_url('assets/css/bootstrap.icons.min.css?v=' . $bootstrapIconsVersion)) ?>">
     <link rel="stylesheet" href="<?= escape(base_url('assets/css/app.css?v=' . $customStylesVersion)) ?>">
 </head>
 
