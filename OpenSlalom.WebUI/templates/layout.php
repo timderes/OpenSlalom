@@ -1,10 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
-$stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css');
+$bootstrapStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstrap.min.css');
+$bootstrapJavascriptVersion = (string) filemtime(dirname(__DIR__) . '/assets/js/bootstrap.bundle.min.js');
+$customStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css');
 ?>
 <!doctype html>
 <html lang="de">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +16,10 @@ $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css'
     <meta name="theme-color" content="#1f84de">
     <title><?= escape($pageTitle ?? 'openSlalom') ?></title>
     <link rel="icon" href="<?= escape(base_url('assets/img/logo.svg')) ?>" type="image/svg+xml">
-    <link rel="stylesheet" href="<?= escape(base_url('assets/css/app.css?v=' . $stylesheetVersion)) ?>">
+    <link rel="stylesheet" href="<?= escape(base_url('assets/css/bootstrap.min.css?v=' . $bootstrapStylesVersion)) ?>">
+    <link rel="stylesheet" href="<?= escape(base_url('assets/css/app.css?v=' . $customStylesVersion)) ?>">
 </head>
+
 <body class="<?= escape($pageClass ?? '') ?>">
     <a class="skip-link" href="#content">Zum Inhalt springen</a>
     <header class="site-header">
@@ -80,5 +86,8 @@ $stylesheetVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css'
             </nav>
         </div>
     </footer>
+
+    <script src="<?= escape(base_url('assets/js/bootstrap.bundle.min.js?v=' . $bootstrapJavascriptVersion)) ?>" defer></script>
 </body>
+
 </html>
