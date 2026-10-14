@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); ?>
+<?php
+
+declare(strict_types=1); ?>
 <section class="auth-page shell">
     <div class="auth-panel">
         <div class="auth-panel-accent" aria-hidden="true"></div>
@@ -18,7 +20,7 @@
             <label><span>Benutzername oder E-Mail-Adresse</span><input name="login" value="<?= escape($login ?? '') ?>" autocomplete="username" required maxlength="254" placeholder="Benutzername oder E-Mail-Adresse"></label>
             <label><span>Passwort</span><input type="password" name="password" autocomplete="current-password" required placeholder="Dein Passwort"></label>
             <a class="forgot-password-link" href="<?= escape(base_url('passwort-vergessen')) ?>">Passwort vergessen?</a>
-            <button class="button button-primary auth-submit" type="submit"><span>Anmelden</span><i aria-hidden="true">→</i></button>
+            <button class="button button-primary auth-submit" type="submit"><span>Anmelden</span><i class="bi bi-arrow-right" aria-hidden="true"></i></button>
         </form>
         <div class="auth-alternative">Noch kein Konto? <a href="<?= escape(base_url('registrieren')) ?>">Jetzt registrieren</a></div>
         <a class="auth-back-link" href="<?= escape(base_url()) ?>">← Zurück zur Startseite</a>

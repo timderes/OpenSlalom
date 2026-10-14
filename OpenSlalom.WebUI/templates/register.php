@@ -1,4 +1,6 @@
-<?php declare(strict_types=1); ?>
+<?php
+
+declare(strict_types=1); ?>
 <?php $formValues ??= ['username' => '', 'email' => '']; ?>
 <section class="auth-page shell">
     <div class="auth-panel registration-panel">
@@ -11,7 +13,7 @@
         </div>
 
         <?php if (isset($registrationSuccessful)): ?>
-            <a class="button button-primary auth-submit" href="<?= escape(base_url('login')) ?>"><span>Zur Anmeldung</span><i aria-hidden="true">→</i></a>
+            <a class="button button-primary auth-submit" href="<?= escape(base_url('login')) ?>"><span>Zur Anmeldung</span><i class="bi bi-arrow-right" aria-hidden="true"></i></a>
         <?php else: ?>
             <?php if (isset($registrationError)): ?><div class="form-message error" role="alert"><?= escape($registrationError) ?></div><?php endif; ?>
             <form class="app-form" action="<?= escape(base_url('registrieren')) ?>" method="post">
@@ -22,7 +24,7 @@
                 <label><span>Passwort</span><input type="password" name="password" autocomplete="new-password" required minlength="12" placeholder="Mindestens 12 Zeichen"></label>
                 <label><span>Passwort wiederholen</span><input type="password" name="password_confirmation" autocomplete="new-password" required minlength="12"></label>
                 <label class="checkbox-label privacy-confirmation"><input type="checkbox" name="accept_privacy" value="1" required><span>Ich habe die <a href="<?= escape(base_url('datenschutz')) ?>" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen.</span></label>
-                <button class="button button-primary auth-submit" type="submit"><span>Konto registrieren</span><i aria-hidden="true">→</i></button>
+                <button class="button button-primary auth-submit" type="submit"><span>Konto registrieren</span><i class="bi bi-arrow-right" aria-hidden="true"></i></button>
             </form>
         <?php endif; ?>
         <div class="auth-alternative">Bereits registriert? <a href="<?= escape(base_url('login')) ?>">Zur Anmeldung</a></div>
