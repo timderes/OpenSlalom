@@ -50,7 +50,7 @@
                 const detail = document.querySelector(`[data-detail-id="${CSS.escape(id)}"]`);
                 if (detail) detail.open = true;
             });
-        } catch (_) {
+        } catch {
             window.sessionStorage.removeItem(detailKey);
         }
     };
