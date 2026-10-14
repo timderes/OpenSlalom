@@ -74,8 +74,10 @@ $customStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.cs
         </nav>
     <?php endif; ?>
 
-    <main id="content">
-        <?php require $contentTemplate; ?>
+    <main class="bg-body-tertiary" id="page-content">
+        <div class="container-xxl py-4 py-lg-5">
+            <?php require_once $contentTemplate; ?>
+        </div>
     </main>
 
     <footer class="border-top px-3 px-lg-4 py-4 py-lg-5 text-center text-lg-start vstack gap-4 flex-lg-row align-items-center justify-content-lg-between">
