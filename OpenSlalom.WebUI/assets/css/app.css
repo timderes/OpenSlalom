@@ -1,8 +1,17 @@
 /* This file is used for custom style overrides. */
 
+:root {
+    --blur-strength: 5px;
+}
+
 /* https://icons.getbootstrap.com/usage/#install */
 @font-face {
     font-family: 'bootstrap-icons';
     src: url('../fonts/bootstrap-icons.woff2') format('woff2'),
         url('../fonts/bootstrap-icons.woff') format('woff');
+}
+
+.blur {
+    backdrop-filter: blur(var(--blur-strength));
+    -webkit-backdrop-filter: blur(var(--blur-strength));
 }
