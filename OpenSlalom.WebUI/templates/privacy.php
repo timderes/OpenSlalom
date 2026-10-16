@@ -7,17 +7,17 @@ $privacyEmail = (string) ($legal['privacy_contact_email'] ?? $legal['email'] ?? 
 $retentionDays = max(1, (int) ($legal['log_retention_days'] ?? 7));
 $authorityUrl = (string) ($legal['supervisory_authority_url'] ?? '');
 ?>
-<section class="legal-hero">
-    <div class="shell">
-        <p class="eyebrow"><span></span> Schutz personenbezogener Daten</p>
-        <h1>Datenschutzerklärung</h1>
+<section class="bg-body-tertiary py-5">
+    <div class="container">
+        <p class="text-muted mb-0">Schutz personenbezogener Daten</p>
+        <h1 class="display-5 fw-bold">Datenschutzerklärung</h1>
         <p>Informationen gemäß Art. 13 und 14 Datenschutz-Grundverordnung (DSGVO).</p>
     </div>
 </section>
 
-<article class="shell legal-content">
+<article class="container py-5 vstack gap-4">
     <?php if (!$isConfigured): ?>
-        <div class="legal-configuration-warning" role="alert">
+        <div class="alert alert-warning" role="alert">
             <strong>Verantwortliche Stelle noch nicht konfiguriert</strong>
             <span>Vor einer öffentlichen Bereitstellung müssen die Werte unter <code>legal</code> in <code>config.php</code> vollständig ersetzt und die Rechtsgrundlagen mit dem Betreiber abgestimmt werden.</span>
         </div>
@@ -108,5 +108,5 @@ $authorityUrl = (string) ($legal['supervisory_authority_url'] ?? '');
         <p>Diese Datenschutzerklärung wird angepasst, wenn sich Funktionen, Rechtsgrundlagen, eingesetzte Dienstleister oder gesetzliche Anforderungen ändern. Es gilt die auf dieser Seite veröffentlichte Fassung.</p>
     </section>
 
-    <p class="legal-updated">Stand: 3. August 2026</p>
+    <p class="text-muted">Stand: 3. August 2026</p>
 </article>

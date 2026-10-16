@@ -1,7 +1,5 @@
 # Converted files to Bootstrap 5
 
-3 / 20 files
-
 - [x] account-deleted.php
 - [x] account.php
 - [ ] admin-user-form.php

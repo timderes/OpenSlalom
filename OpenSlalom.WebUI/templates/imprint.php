@@ -5,17 +5,17 @@ $operator = trim((string) ($legal['operator_name'] ?? ''));
 $isConfigured = $operator !== '' && !str_starts_with($operator, '[');
 $email = (string) ($legal['email'] ?? '');
 ?>
-<section class="legal-hero">
-    <div class="shell">
-        <p class="eyebrow"><span></span> Rechtliche Informationen</p>
-        <h1>Impressum</h1>
+<section class="bg-body-tertiary py-5">
+    <div class="container">
+        <p class="text-muted mb-0">Rechtliche Informationen</p>
+        <h1 class="display-5 fw-bold">Impressum</h1>
         <p>Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG).</p>
     </div>
 </section>
 
-<article class="shell legal-content">
+<article class="container py-5 vstack gap-4">
     <?php if (!$isConfigured): ?>
-        <div class="legal-configuration-warning" role="alert">
+        <div class="alert alert-warning" role="alert">
             <strong>Betreiberangaben noch nicht konfiguriert</strong>
             <span>Vor einer öffentlichen Bereitstellung müssen die Werte unter <code>legal</code> in <code>config.php</code> vollständig ersetzt und rechtlich geprüft werden.</span>
         </div>
@@ -85,5 +85,5 @@ $email = (string) ($legal['email'] ?? '');
         <p>Die durch den Seitenbetreiber erstellten Inhalte, Gestaltungen, Grafiken und Softwarebestandteile unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der gesetzlichen Schranken bedürfen der vorherigen Zustimmung des jeweiligen Rechteinhabers. Inhalte Dritter werden als solche gekennzeichnet. Gesetzlich zulässige Nutzungen bleiben unberührt.</p>
     </section>
 
-    <p class="legal-updated">Stand: 3. August 2026</p>
+    <p class="text-muted">Stand: 3. August 2026</p>
 </article>

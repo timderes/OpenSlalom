@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 ?>
 
-<section class="card card-body bg-body border-0 shadow-sm p-3 py-5 text-center mx-auto vstack gap-5" style="max-width: 680px;">
+<section class="card card-body bg-body border-0 shadow-sm p-3 py-5 text-center mx-auto col-lg-8 vstack gap-5">
     <header>
         <img class="img-fluid mb-3" src="<?= escape(base_url('assets/img/logo.png')) ?>" alt="" width="64" height="64">
         <h1 class="text-body-emphasis display-5 fw-bold"><?= isset($passwordChanged) ? 'Passwort geändert' : 'Willkommen zurück!' ?></h1>
