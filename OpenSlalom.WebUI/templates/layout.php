@@ -6,11 +6,12 @@ $bootstrapStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/boo
 $bootstrapIconsVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/bootstrap-icons.min.css');
 $bootstrapJavascriptVersion = (string) filemtime(dirname(__DIR__) . '/assets/js/bootstrap.bundle.min.js');
 $customStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.css');
+$colorSchemeScriptVersion = (string) filemtime(dirname(__DIR__) . '/assets/js/color-scheme.js');
 
 ?>
 
 <!doctype html>
-<html lang="de" data-bs-theme="light">
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
@@ -158,8 +159,21 @@ $customStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.cs
                                 </form>
                             </li>
                         <?php endif; ?>
+
                     </ul>
                 <?php endif; ?>
+                <ul class="navbar-nav ms-lg-3 mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <button
+                            class="btn btn-sm btn-link"
+                            id="theme-toggle"
+                            type="button"
+                            aria-label="Farbschema wechseln"
+                            title="Farbschema wechseln">
+                            <i class="bi bi-moon-stars fs-5" id="theme-toggle-icon" aria-hidden="true"></i>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -182,6 +196,9 @@ $customStylesVersion = (string) filemtime(dirname(__DIR__) . '/assets/css/app.cs
         </nav>
     </footer>
 
+
+
+    <script src="<?= escape(base_url('assets/js/color-scheme.js?v=' . $colorSchemeScriptVersion)) ?>" defer></script>
     <script src="<?= escape(base_url('assets/js/bootstrap.bundle.min.js?v=' . $bootstrapJavascriptVersion)) ?>" defer></script>
 </body>
 
