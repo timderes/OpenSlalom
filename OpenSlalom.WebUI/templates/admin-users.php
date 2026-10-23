@@ -13,7 +13,7 @@ declare(strict_types=1);
     </header>
 
     <div class="vstack gap-3">
-        <a class="btn btn-primary" style="width: fit-content;" href="<?= escape(base_url('admin/benutzer/neu')) ?>"><i class="bi bi-person-add"></i> Benutzer anlegen</a>
+        <a class="btn btn-primary w-fit-content" href="<?= escape(base_url('admin/benutzer/neu')) ?>"><i class="bi bi-person-add"></i> Benutzer anlegen</a>
 
         <?php if (isset($_SESSION['flash_success'])): ?>
             <div class="alert alert-success" role="alert"><?= escape((string) $_SESSION['flash_success']) ?></div>
