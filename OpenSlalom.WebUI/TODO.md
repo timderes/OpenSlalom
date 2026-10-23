@@ -4,7 +4,7 @@
 - [x] account.php
 - [x] admin-user-form.php
 - [x] admin-users.php
-- [ ] error.php
+- [x] error.php
 - [ ] forgot-password.php
 - [ ] home.php
 - [ ] imprint.php
