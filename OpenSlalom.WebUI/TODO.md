@@ -5,17 +5,17 @@
 - [x] admin-user-form.php
 - [x] admin-users.php
 - [x] error.php
-- [ ] forgot-password.php
+- [x] forgot-password.php
 - [ ] home.php
-- [ ] imprint.php
-- [ ] layout.php
+- [x] imprint.php
+- [x] layout.php
 - [ ] list-controls.php
-- [ ] login.php
+- [x] login.php
 - [ ] master-data-delete.php
 - [ ] master-data-form.php
 - [ ] master-data-list.php
 - [x] not-found.php
-- [ ] privacy.php
+- [x] privacy.php
 - [ ] register.php
 - [ ] reset-password.php
 - [ ] statistics.php
