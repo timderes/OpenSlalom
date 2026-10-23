@@ -17,18 +17,18 @@ $showPagination ??= true;
             <i class="bi bi-search"></i> Suchen
         </button>
 
-        <?php if ($search !== ''): ?><a class="btn btn-outline-secondary" href="<?= escape(base_url($listPath)) ?>">Zurücksetzen</a><?php endif; ?>
+        <?php if ($search !== ''): ?><a class="btn btn-secondary" href="<?= escape(base_url($listPath)) ?>">Zurücksetzen</a><?php endif; ?>
     </form>
 <?php endif; ?>
 
 <?php if ($showPagination && $pagination['pages'] > 1): ?>
     <nav aria-label="Seitennavigation">
         <ul class="pagination mb-0">
-        <?php if ($pagination['page'] > 1): ?><li class="page-item"><a class="page-link" href="<?= escape(list_page_url($listPath, $pagination['page'] - 1, $search)) ?>">← Zurück</a></li><?php endif; ?>
-        <?php for ($page = max(1, $pagination['page'] - 2); $page <= min($pagination['pages'], $pagination['page'] + 2); $page++): ?>
-            <li class="page-item <?= $page === $pagination['page'] ? 'active' : '' ?>"><a class="page-link" href="<?= escape(list_page_url($listPath, $page, $search)) ?>"><?= $page ?></a></li>
-        <?php endfor; ?>
-        <?php if ($pagination['page'] < $pagination['pages']): ?><li class="page-item"><a class="page-link" href="<?= escape(list_page_url($listPath, $pagination['page'] + 1, $search)) ?>">Weiter →</a></li><?php endif; ?>
+            <?php if ($pagination['page'] > 1): ?><li class="page-item"><a class="page-link" href="<?= escape(list_page_url($listPath, $pagination['page'] - 1, $search)) ?>">← Zurück</a></li><?php endif; ?>
+            <?php for ($page = max(1, $pagination['page'] - 2); $page <= min($pagination['pages'], $pagination['page'] + 2); $page++): ?>
+                <li class="page-item <?= $page === $pagination['page'] ? 'active' : '' ?>"><a class="page-link" href="<?= escape(list_page_url($listPath, $page, $search)) ?>"><?= $page ?></a></li>
+            <?php endfor; ?>
+            <?php if ($pagination['page'] < $pagination['pages']): ?><li class="page-item"><a class="page-link" href="<?= escape(list_page_url($listPath, $pagination['page'] + 1, $search)) ?>">Weiter →</a></li><?php endif; ?>
         </ul>
     </nav>
 <?php endif; ?>

@@ -3,7 +3,7 @@
 - [x] account-deleted.php
 - [x] account.php
 - [x] admin-user-form.php
-- [ ] admin-users.php
+- [x] admin-users.php
 - [ ] error.php
 - [ ] forgot-password.php
 - [ ] home.php
