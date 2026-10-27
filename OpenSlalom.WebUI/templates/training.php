@@ -17,7 +17,7 @@ $badgeFinishedColor = $training['is_finished'] ? 'success' : 'primary';
 <div class="container-fluid py-4" data-auto-refresh="<?= (int) $refreshSeconds ?>">
     <header class="card shadow-sm mb-4">
         <div class="card-body p-4">
-            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start gap-3 mb-4">
+            <div class="d-flex flex-column flex-xl-row justify-content-between align-items-start gap-3 mb-4">
                 <div class="flex-grow-1">
                     <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
                         <span class="badge text-bg-<?= $badgeFinishedColor ?>">
@@ -36,17 +36,17 @@ $badgeFinishedColor = $training['is_finished'] ? 'success' : 'primary';
                     <?php endif; ?>
                 </div>
 
-                <div class="d-flex flex-wrap align-items-center gap-2">
+                <div class="d-flex flex-column flex-sm-row w-100 w-xl-auto align-items-stretch align-items-sm-center gap-2">
                     <?php if ($canManageTrainings): ?>
-                        <a class="btn btn-outline-primary" href="<?= escape(base_url('trainings/' . (int) $training['id'] . '/edit')) ?>">
+                        <a class="btn btn-outline-primary flex-grow-1 flex-sm-grow-0" href="<?= escape(base_url('trainings/' . (int) $training['id'] . '/edit')) ?>">
                             <i class="bi bi-pencil me-1" aria-hidden="true"></i>
                             Training bearbeiten
                         </a>
                     <?php endif; ?>
                     <?php if ($refreshSeconds > 0): ?>
-                        <button id="refresh-toggle" class="btn btn-outline-secondary" type="button" aria-pressed="true">
+                        <button id="refresh-toggle" class="btn btn-outline-secondary flex-grow-1 flex-sm-grow-0" type="button" aria-pressed="true">
                             <span class="spinner-border spinner-border-sm me-2" aria-hidden="true"></span>
-                            <span>Live-Aktualisierung an</span>
+                            <span data-refresh-label>Live-Aktualisierung an</span>
                         </button>
                     <?php endif; ?>
                 </div>
@@ -305,13 +305,13 @@ $badgeFinishedColor = $training['is_finished'] ? 'success' : 'primary';
                                 <tr>
                                     <th scope="col">Pos.</th>
                                     <th scope="col">Fahrer</th>
-                                    <th scope="col">Klasse</th>
-                                    <th scope="col">Kart</th>
+                                    <th scope="col" class="d-none d-md-table-cell">Klasse</th>
+                                    <th scope="col" class="d-none d-md-table-cell">Kart</th>
                                     <th scope="col" class="text-end">Bestzeit</th>
                                     <th scope="col" class="text-end">Abstand</th>
-                                    <th scope="col" class="text-end">Ø-Zeit</th>
-                                    <th scope="col" class="text-end">Runden</th>
-                                    <th scope="col" class="text-end">Zuletzt</th>
+                                    <th scope="col" class="text-end d-none d-md-table-cell">Ø-Zeit</th>
+                                    <th scope="col" class="text-end d-none d-md-table-cell">Runden</th>
+                                    <th scope="col" class="text-end d-none d-md-table-cell">Zuletzt</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -319,13 +319,13 @@ $badgeFinishedColor = $training['is_finished'] ? 'success' : 'primary';
                                     <tr>
                                         <td><span class="badge text-bg-<?= (int) $row['position'] === 1 ? 'warning' : 'secondary' ?>"><?= (int) $row['position'] ?></span></td>
                                         <td class="fw-semibold"><?= escape($row['driver']) ?></td>
-                                        <td><span class="badge text-bg-light border"><?= escape($row['class']) ?></span></td>
-                                        <td><?= escape($row['kart']) ?></td>
+                                        <td class="d-none d-md-table-cell"><span class="badge text-bg-light border"><?= escape($row['class']) ?></span></td>
+                                        <td class="d-none d-md-table-cell"><?= escape($row['kart']) ?></td>
                                         <td class="text-end font-monospace fw-bold text-nowrap"><?= escape(format_training_time($row['best'])) ?></td>
                                         <td class="text-end font-monospace text-nowrap"><?= (int) $row['position'] === 1 ? '–' : '+' . escape(format_training_time($row['difference'])) ?></td>
-                                        <td class="text-end font-monospace text-nowrap"><?= escape(format_training_time($row['average'])) ?></td>
-                                        <td class="text-end"><?= (int) $row['laps'] ?></td>
-                                        <td class="text-end font-monospace"><?= escape(format_date($row['last_drive'], 'H:i:s')) ?></td>
+                                        <td class="text-end font-monospace text-nowrap d-none d-md-table-cell"><?= escape(format_training_time($row['average'])) ?></td>
+                                        <td class="text-end d-none d-md-table-cell"><?= (int) $row['laps'] ?></td>
+                                        <td class="text-end font-monospace d-none d-md-table-cell"><?= escape(format_date($row['last_drive'], 'H:i:s')) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

@@ -11,6 +11,7 @@
 
         tabs.forEach((tab) => {
             const selected = tab === selectedTab;
+            tab.classList.toggle('active', selected);
             tab.setAttribute('aria-selected', selected ? 'true' : 'false');
             tab.tabIndex = selected ? 0 : -1;
         });
@@ -57,7 +58,7 @@
 
     const updateToggle = () => {
         toggle.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-        toggle.querySelector('span').textContent = enabled
+        toggle.querySelector('[data-refresh-label]').textContent = enabled
             ? `Live-Aktualisierung an · ${seconds}s`
             : 'Live-Aktualisierung aus';
         toggle.classList.toggle('is-paused', !enabled);
