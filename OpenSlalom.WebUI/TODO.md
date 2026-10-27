@@ -18,7 +18,7 @@
 - [x] privacy.php
 - [ ] register.php
 - [ ] reset-password.php
-- [ ] statistics.php
+- [x] statistics.php
 - [ ] training-form.php
-- [ ] training.php
-- [ ] trainings.php
+- [x] training.php
+- [x] trainings.php
