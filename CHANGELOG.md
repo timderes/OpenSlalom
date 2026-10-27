@@ -11,6 +11,9 @@ die Versionsnummern folgen der [semantischen Versionierung](https://semver.org/l
 ### Geändert
 
 - Die Trainings-Stoppuhren zeigen die aktuelle Rundenzeit nur noch mit einer Nachkommastelle an, um die Lesbarkeit zu verbessern. Die genaue Rundenzeit mit drei Nachkommastellen wird weiterhin in der Rundenliste angezeigt.
+- Die WebUI wurde mit Bootstrap 5 modernisiert und die Darstellung für kleinere Geräte verbessert.
+- Die WebUI unterstützt nun einen Hell- und Dunkelmodus, der automatisch an die Systemeinstellungen des Browsers angepasst wird.
+- Die Darstellung von Zeiten und Zeitdauern im WebUI wurde vereinheitlicht, sodass Zeiten immer im Format mm:ss.mmm und Zeitdauern im Format hh:mm:ss oder mm:ss angezeigt werden.
 
 ### Behoben
 
