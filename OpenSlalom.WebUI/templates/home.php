@@ -140,74 +140,109 @@ declare(strict_types=1);
         </div>
     </section>
 
-    <section class="card card-body bg-primary text-white border-0 shadow-sm">
-        <div class="row align-items-center g-4">
-            <div class="col-lg-6"><img class="img-fluid" src="<?= escape(base_url('assets/img/web-results.svg')) ?>" alt="Illustration einer veröffentlichten Trainingsauswertung im Web"></div>
-            <div class="col-lg-6">
-                <p class="text-white-50">Ergebnisse im Web</p>
-                <h2>Ein Training. Ein Link. Ein klarer Zwischenstand.</h2>
-                <p>Veröffentlichte Trainings erhalten eine eindeutige UUID. Per QR-Code oder Trainingslink können Fahrer und Zuschauer Bestzeiten, Stints, Runden und Statistiken direkt aufrufen.</p>
-                <div class="vstack gap-2">
-                    <span><i class="bi bi-check2"></i> Öffentliche Ergebnisse mit Datenschutz</span>
-                    <span><i class="bi bi-check2"></i> Vornamen sichtbar, Nachnamen geschützt</span>
-                    <span><i class="bi bi-check2"></i> Vollständige Daten für berechtigte Benutzer</span>
-                    <span><i class="bi bi-check2"></i> Aktualisierung während laufender Trainings</span>
+    <section class="card bg-primary text-white border-0 shadow-sm overflow-hidden">
+        <div class="card-body p-4 p-lg-5">
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-lg-5 text-center">
+                    <img class="img-fluid" src="<?= escape(base_url('assets/img/web-results.svg')) ?>" alt="Illustration einer veröffentlichten Trainingsauswertung im Web">
+                </div>
+                <div class="col-lg-7">
+                    <p class="text-uppercase text-opacity-75 fw-semibold small mb-2">Ergebnisse im Web</p>
+                    <h2 class="display-6 fw-bold">Ein Training. Ein Link. Ein klarer Zwischenstand.</h2>
+                    <p class="lead text-opacity-75 mb-4">Veröffentlichte Trainings erhalten eine eindeutige UUID. Per QR-Code oder Trainingslink können Fahrer und Zuschauer Bestzeiten, Stints, Runden und Statistiken direkt aufrufen.</p>
+                    <ul class="list-unstyled vstack gap-2 mb-0">
+                        <li><i class="bi bi-check2-circle me-2" aria-hidden="true"></i>Öffentliche Ergebnisse mit Datenschutz</li>
+                        <li><i class="bi bi-check2-circle me-2" aria-hidden="true"></i>Vornamen sichtbar, Nachnamen geschützt</li>
+                        <li><i class="bi bi-check2-circle me-2" aria-hidden="true"></i>Vollständige Daten für berechtigte Benutzer</li>
+                        <li><i class="bi bi-check2-circle me-2" aria-hidden="true"></i>Aktualisierung während laufender Trainings</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
     <section>
-        <div class="mb-4">
-            <p class="text-muted mb-0">Mehr als eine Ergebnisliste</p>
-            <h2 class="display-6 fw-bold">Auswertungen, die den nächsten Schritt zeigen.</h2>
+        <header class="mb-4">
+            <p class="text-body-secondary text-uppercase fw-semibold small mb-2">Mehr als eine Ergebnisliste</p>
+            <h2 class="display-6 fw-bold text-body-emphasis mb-0">Auswertungen, die den nächsten Schritt zeigen.</h2>
+        </header>
+        <div class="row row-cols-1 row-cols-lg-3 g-4">
+            <article class="col">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <span class="rounded bg-primary-subtle text-primary p-2"><i class="bi bi-bar-chart-line fs-5" aria-hidden="true"></i></span>
+                            <div>
+                                <p class="text-body-secondary text-uppercase fw-semibold small mb-0">Statistiken</p><span class="small text-body-secondary">Aktuelles Jahr</span>
+                            </div>
+                        </div>
+                        <div class="display-5 fw-bold text-body-emphasis">284</div>
+                        <p class="text-body-secondary mb-3">zeitgemessene Runden</p>
+                        <p class="mb-0">Globale Statistik mit frei wählbarem Zeitraum, Fahrerwerten und Kart-Auswertung.</p>
+                    </div>
+                </div>
+            </article>
+            <article class="col">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <span class="rounded bg-primary-subtle text-primary p-2"><i class="bi bi-speedometer2 fs-5" aria-hidden="true"></i></span>
+                            <p class="text-body-secondary text-uppercase fw-semibold small mb-0">Kart-Auswertung</p>
+                        </div>
+                        <h3 class="h4">Welches Kart wurde wie gefahren?</h3>
+                        <p>Fahrzeit, Runden, Stints, Fehler und Fahrer können pro Kart bis ins Detail aufgeschlüsselt werden.</p>
+                        <ul class="list-group list-group-flush small">
+                            <li class="list-group-item px-0 d-flex justify-content-between">Kart 7 <strong>12 Stints</strong></li>
+                            <li class="list-group-item px-0 d-flex justify-content-between">Kart 3 <strong>9 Stints</strong></li>
+                            <li class="list-group-item px-0 d-flex justify-content-between">Kart 4 <strong>7 Stints</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+            <article class="col">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <span class="rounded bg-primary-subtle text-primary p-2"><i class="bi bi-shield-check fs-5" aria-hidden="true"></i></span>
+                            <p class="text-body-secondary text-uppercase fw-semibold small mb-0">Berechtigungen</p>
+                        </div>
+                        <h3 class="h4">Rollen dort, wo sie wirken.</h3>
+                        <p>Jede Rolle erhält nur die Funktionen und Trainings, die für sie bestimmt sind.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge text-bg-primary">Admin</span><span class="badge text-bg-secondary">Leitung</span><span class="badge text-bg-info">Fahrer</span><span class="badge text-bg-light border">Registriert</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </div>
-        <div class="row row-cols-1 row-cols-lg-3 g-3">
-            <article class="col"><div class="card card-body border-0 shadow-sm h-100">
-                <div class="d-flex justify-content-between"><span>STATISTIKEN</span><b>Aktuelles Jahr</b></div>
-                <div class="display-5 fw-bold">284</div><span class="text-muted">zeitgemessene Runden</span>
-                <p>Globale Statistik mit frei wählbarem Zeitraum, Fahrerwerten und Kart-Auswertung.</p>
-                </div>
-            </article>
-            <article class="col"><div class="card card-body border-0 shadow-sm h-100">
-                <span class="text-muted">KART-AUSWERTUNG</span>
-                <h3>Welches Kart wurde wie gefahren?</h3>
-                <p>Fahrzeit, Runden, Stints, Fehler und Fahrer können pro Kart und bis auf einzelne Fahrer aufgeschlüsselt werden.</p>
-                <div class="list-group"><span class="list-group-item">Kart 7 <b>12 Stints</b></span><span class="list-group-item">Kart 3 <b>9 Stints</b></span><span class="list-group-item">Kart 4 <b>7 Stints</b></span></div>
-                </div>
-            </article>
-            <article class="col"><div class="card card-body border-0 shadow-sm h-100">
-                <span class="text-muted">BERECHTIGUNGEN</span>
-                <h3>Rollen dort, wo sie wirken.</h3>
-                <p>Administratoren, Trainingsleiter, Fahrer und registrierte Benutzer erhalten nur die Funktionen und Trainings, die für sie bestimmt sind.</p>
-                <div class="d-flex flex-wrap gap-2"><span class="badge text-bg-primary">Admin</span><span class="badge text-bg-secondary">Leitung</span><span class="badge text-bg-info">Fahrer</span><span class="badge text-bg-light">Registriert</span></div>
-                </div>
-            </article>
-        </div></div>
     </section>
 
-    <section class="row g-4">
+    <section class="row g-4 align-items-stretch">
         <div class="col-lg-7">
-            <p class="text-muted mb-0">Sicher verwalten</p>
-            <h2>Vom Konto bis zur Veröffentlichung kontrolliert.</h2>
-            <p>Die WebUI bringt Benutzerregistrierung, Passwort-Reset, eigene Kontoverwaltung und rollenbasierte CRUD-Bereiche zusammen. Öffentliche Trainings bleiben bewusst von internen Verwaltungsfunktionen getrennt.</p>
-            <a class="btn btn-primary" href="<?= escape(base_url('registrieren')) ?>">Jetzt registrieren</a>
+            <div class="h-100 d-flex flex-column justify-content-center">
+                <p class="text-body-secondary text-uppercase fw-semibold small mb-2">Sicher verwalten</p>
+                <h2 class="display-6 fw-bold text-body-emphasis">Vom Konto bis zur Veröffentlichung kontrolliert.</h2>
+                <p class="lead">Die WebUI verbindet Benutzerregistrierung, Passwort-Reset, Kontoverwaltung und rollenbasierte Bereiche. Öffentliche Trainings bleiben bewusst von internen Verwaltungsfunktionen getrennt.</p>
+                <div><a class="btn btn-primary" href="<?= escape(base_url('registrieren')) ?>">Jetzt registrieren</a></div>
+            </div>
         </div>
-        <div class="col-lg-5"><div class="list-group">
-            <div class="list-group-item"><b>01</b> <strong>Konto erstellen</strong><small class="d-block text-muted">Registrierte Benutzer starten ohne Fahrerzuordnung.</small></div>
-            <div class="list-group-item"><b>02</b> <strong>Rolle zuweisen</strong><small class="d-block text-muted">Administratoren ordnen Rechte und Fahrerprofil zu.</small></div>
-            <div class="list-group-item"><b>03</b> <strong>Training freigeben</strong><small class="d-block text-muted">Öffentliche Ergebnisse nur bewusst veröffentlichen.</small></div>
-        </div></div>
-    </div>
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="list-group list-group-flush">
+                    <div class="list-group-item p-3"><span class="badge text-bg-primary me-2">01</span><strong>Konto erstellen</strong><small class="d-block text-body-secondary ms-5">Registrierte Benutzer starten ohne Fahrerzuordnung.</small></div>
+                    <div class="list-group-item p-3"><span class="badge text-bg-primary me-2">02</span><strong>Rolle zuweisen</strong><small class="d-block text-body-secondary ms-5">Administratoren ordnen Rechte und Fahrerprofil zu.</small></div>
+                    <div class="list-group-item p-3"><span class="badge text-bg-primary me-2">03</span><strong>Training freigeben</strong><small class="d-block text-body-secondary ms-5">Öffentliche Ergebnisse nur bewusst veröffentlichen.</small></div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="card card-body border-0 shadow-sm text-center">
-        <img class="mx-auto mb-3" src="<?= escape(base_url('assets/img/logo.png')) ?>" alt="" width="86" height="86">
-        <div>
-            <p class="text-muted">openSlalom</p>
-            <h2>Weniger Verwaltung.<br>Mehr Zeit auf der Strecke.</h2>
+    <section class="card border-0 shadow-sm text-center">
+        <div class="card-body p-4 p-lg-5">
+            <img class="mb-3" src="<?= escape(base_url('assets/img/logo.png')) ?>" alt="" width="72" height="72">
+            <p class="text-body-secondary text-uppercase fw-semibold small mb-2">openSlalom</p>
+            <h2 class="display-6 fw-bold text-body-emphasis">Weniger Verwaltung.<br>Mehr Zeit auf der Strecke.</h2>
+            <a class="btn btn-primary mt-2" href="<?= escape(base_url('registrieren')) ?>">Konto erstellen</a>
         </div>
-        <a class="btn btn-primary" href="<?= escape(base_url('registrieren')) ?>">Konto erstellen</a>
     </section>
 </div>
-
