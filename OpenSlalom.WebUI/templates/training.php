@@ -385,8 +385,8 @@ $badgeFinishedColor = $training['is_finished'] ? 'success' : 'primary';
                                             <?php foreach ($driver['stints'] as $stint): ?>
                                                 <details class="card" data-detail-id="stint-<?= (int) $stint['id'] ?>">
                                                     <summary class="card-header d-flex flex-column flex-sm-row justify-content-between gap-2">
-                                                        <span><strong class="d-block">Stint vom <?= escape(format_date($stint['datum'], 'd.m.Y · H:i:s')) ?></strong><span class="small text-body-secondary"><?= escape($stint['kart']) ?> · <?= escape($stint['class']) ?></span></span>
-                                                        <span><span class="small text-body-secondary d-block">Gesamt</span><strong class="font-monospace"><?= escape(format_training_time($stint['total'])) ?></strong></span>
+                                                        <span><strong class="d-block">Stint vom <?= escape(format_date($stint['datum'], 'd.m.Y · H:i:s')) ?></strong><span class="small text-body-secondary">Kart <?= escape($stint['kart'] ?? "Unbekanntes Kart") ?> · Klasse <?= escape($stint['class']) ?></span></span>
+                                                        <span><span class="small text-body-secondary d-block">Gesamt-Fahrzeit</span><strong class="font-monospace"><?= escape(format_training_time($stint['total'])) ?></strong></span>
                                                     </summary>
                                                     <div class="card-body">
                                                         <div class="d-flex flex-wrap gap-3 small mb-3"><span>Gültige Runden <strong><?= (int) $stint['valid_laps'] ?></strong></span><span>Durchschnitt <strong class="font-monospace"><?= escape(format_training_time($stint['average'])) ?></strong></span></div>
@@ -533,33 +533,34 @@ $badgeFinishedColor = $training['is_finished'] ? 'success' : 'primary';
                         <div class="alert alert-info mb-0"><strong class="d-block">Noch keine Trainingsdaten.</strong>Die Statistik erscheint, sobald Fahrer einem Training zugeordnet oder Stints gespeichert wurden.</div>
                     </div>
                 <?php else: ?>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-striped align-middle mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col">Fahrer</th>
-                                    <th scope="col" class="text-end">Fahrzeit</th>
-                                    <th scope="col" class="text-end">Runden</th>
-                                    <th scope="col" class="text-end">Fehlerfreie Runden</th>
-                                    <th scope="col" class="text-end">Stints</th>
-                                    <th scope="col" class="text-end">PF</th>
-                                    <th scope="col" class="text-end">TF</th>
-                                    <th scope="col" class="text-end">PF / Runde</th>
-                                    <th scope="col" class="text-end">TF / Runde</th>
-                                </tr>
-                            </thead>
-                            <tbody><?php foreach ($statistics['drivers'] as $driver): ?><tr>
-                                        <td class="fw-semibold"><?= escape($driver['name']) ?></td>
-                                        <td class="text-end font-monospace text-nowrap"><?= escape(format_duration($driver['raw_seconds'])) ?></td>
-                                        <td class="text-end"><?= (int) $driver['rounds'] ?></td>
-                                        <td class="text-end text-nowrap"><?= (int) $driver['error_free_rounds'] ?> <span class="text-body-secondary small">(<?= escape(number_format($driver['error_free_percent'], 2, '.', '')) ?>%)</span></td>
-                                        <td class="text-end"><?= (int) $driver['stints'] ?></td>
-                                        <td class="text-end"><?= (int) $driver['pf'] ?></td>
-                                        <td class="text-end"><?= (int) $driver['tf'] ?></td>
-                                        <td class="text-end"><?= escape(number_format($driver['average_pf'], 2, '.', '')) ?></td>
-                                        <td class="text-end"><?= escape(number_format($driver['average_tf'], 2, '.', '')) ?></td>
-                                    </tr><?php endforeach; ?></tbody>
-                        </table>
+                    <div class="row g-3 p-3">
+                        <?php foreach ($statistics['drivers'] as $driver): ?>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <article class="card h-100">
+                                    <div class="card-body">
+                                        <h3 class="h6 fw-semibold mb-3"><?= escape($driver['name']) ?></h3>
+                                        <dl class="row mb-0 small">
+                                            <dt class="col-7 fw-normal text-body-secondary">Fahrzeit</dt>
+                                            <dd class="col-5 text-end font-monospace text-nowrap"><?= escape(format_duration($driver['raw_seconds'])) ?></dd>
+                                            <dt class="col-7 fw-normal text-body-secondary">Runden</dt>
+                                            <dd class="col-5 text-end"><?= (int) $driver['rounds'] ?></dd>
+                                            <dt class="col-7 fw-normal text-body-secondary">Fehlerfreie Runden</dt>
+                                            <dd class="col-5 text-end text-nowrap"><?= (int) $driver['error_free_rounds'] ?> <span class="text-body-secondary">(<?= escape(number_format($driver['error_free_percent'], 2, '.', '')) ?>%)</span></dd>
+                                            <dt class="col-7 fw-normal text-body-secondary">Stints</dt>
+                                            <dd class="col-5 text-end"><?= (int) $driver['stints'] ?></dd>
+                                            <dt class="col-7 fw-normal text-body-secondary">PF</dt>
+                                            <dd class="col-5 text-end"><?= (int) $driver['pf'] ?></dd>
+                                            <dt class="col-7 fw-normal text-body-secondary">TF</dt>
+                                            <dd class="col-5 text-end"><?= (int) $driver['tf'] ?></dd>
+                                            <dt class="col-7 fw-normal text-body-secondary">PF / Runde</dt>
+                                            <dd class="col-5 text-end"><?= escape(number_format($driver['average_pf'], 2, '.', '')) ?></dd>
+                                            <dt class="col-7 fw-normal text-body-secondary">TF / Runde</dt>
+                                            <dd class="col-5 text-end"><?= escape(number_format($driver['average_tf'], 2, '.', '')) ?></dd>
+                                        </dl>
+                                    </div>
+                                </article>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
             </section>
@@ -576,68 +577,62 @@ $badgeFinishedColor = $training['is_finished'] ? 'success' : 'primary';
                         <div class="alert alert-info mb-0"><strong class="d-block">Keine Kartdaten für dieses Training.</strong>Kartdaten erscheinen, sobald gespeicherte Stints einem Kart zugeordnet sind.</div>
                     </div>
                 <?php else: ?>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-striped align-middle mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col">Kart</th>
-                                    <th scope="col" class="text-end">Fahrzeit</th>
-                                    <th scope="col" class="text-end">Runden</th>
-                                    <th scope="col" class="text-end">Stints</th>
-                                    <th scope="col" class="text-end">Fahrer</th>
-                                    <th scope="col" class="text-end">PF</th>
-                                    <th scope="col" class="text-end">TF</th>
-                                    <th scope="col" class="text-end">PF / Runde</th>
-                                    <th scope="col" class="text-end">TF / Runde</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($view['karts'] as $kartIndex => $kart): ?>
-                                    <tr data-kart-summary tabindex="0" role="button" aria-expanded="false" aria-controls="training-kart-driver-details-<?= (int) $kartIndex ?>">
-                                        <td class="fw-semibold"><?= escape($kart['name']) ?></td>
-                                        <td class="text-end font-monospace text-nowrap"><?= escape(format_duration($kart['seconds'])) ?></td>
-                                        <td class="text-end"><?= (int) $kart['rounds'] ?></td>
-                                        <td class="text-end"><?= (int) $kart['stints'] ?></td>
-                                        <td class="text-end"><?= count($kart['drivers']) ?></td>
-                                        <td class="text-end"><?= (int) $kart['pf'] ?></td>
-                                        <td class="text-end"><?= (int) $kart['tf'] ?></td>
-                                        <td class="text-end"><?= escape(number_format($kart['average_pf'], 2, '.', '')) ?></td>
-                                        <td class="text-end"><?= escape(number_format($kart['average_tf'], 2, '.', '')) ?></td>
-                                    </tr>
-                                    <tr id="training-kart-driver-details-<?= (int) $kartIndex ?>" data-kart-details hidden>
-                                        <td colspan="9" class="bg-body-tertiary p-3">
+                    <div class="row g-3 p-3">
+                        <?php foreach ($view['karts'] as $kartIndex => $kart): ?>
+                            <div class="col-12 col-md-6 col-xl-4">
+                                <article class="card h-100">
+                                    <div class="card-body">
+                                        <div data-kart-summary tabindex="0" role="button" aria-expanded="false" aria-controls="training-kart-driver-details-<?= (int) $kartIndex ?>">
+                                            <h3 class="h6 fw-semibold mb-3"><?= escape($kart['name']) ?></h3>
+                                            <dl class="row mb-0 small">
+                                                <dt class="col-7 fw-normal text-body-secondary">Fahrzeit</dt>
+                                                <dd class="col-5 text-end font-monospace text-nowrap"><?= escape(format_duration($kart['seconds'])) ?></dd>
+                                                <dt class="col-7 fw-normal text-body-secondary">Runden</dt>
+                                                <dd class="col-5 text-end"><?= (int) $kart['rounds'] ?></dd>
+                                                <dt class="col-7 fw-normal text-body-secondary">Stints</dt>
+                                                <dd class="col-5 text-end"><?= (int) $kart['stints'] ?></dd>
+                                                <dt class="col-7 fw-normal text-body-secondary">Fahrer</dt>
+                                                <dd class="col-5 text-end"><?= count($kart['drivers']) ?></dd>
+                                                <dt class="col-7 fw-normal text-body-secondary">PF</dt>
+                                                <dd class="col-5 text-end"><?= (int) $kart['pf'] ?></dd>
+                                                <dt class="col-7 fw-normal text-body-secondary">TF</dt>
+                                                <dd class="col-5 text-end"><?= (int) $kart['tf'] ?></dd>
+                                                <dt class="col-7 fw-normal text-body-secondary">PF / Runde</dt>
+                                                <dd class="col-5 text-end"><?= escape(number_format($kart['average_pf'], 2, '.', '')) ?></dd>
+                                                <dt class="col-7 fw-normal text-body-secondary">TF / Runde</dt>
+                                                <dd class="col-5 text-end"><?= escape(number_format($kart['average_tf'], 2, '.', '')) ?></dd>
+                                            </dl>
+                                        </div>
+                                        <div id="training-kart-driver-details-<?= (int) $kartIndex ?>" data-kart-details class="border-top mt-3 pt-3" hidden>
                                             <div class="fw-semibold mb-2">Fahrerbezogene Auswertung</div>
-                                            <div class="table-responsive">
-                                                <table class="table table-sm table-striped align-middle mb-0">
-                                                    <thead class="table-light">
-                                                        <tr>
-                                                            <th scope="col">Fahrer</th>
-                                                            <th scope="col" class="text-end">Fahrzeit</th>
-                                                            <th scope="col" class="text-end">Runden</th>
-                                                            <th scope="col" class="text-end">Stints</th>
-                                                            <th scope="col" class="text-end">PF</th>
-                                                            <th scope="col" class="text-end">TF</th>
-                                                            <th scope="col" class="text-end">PF / Runde</th>
-                                                            <th scope="col" class="text-end">TF / Runde</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody><?php foreach ($kart['drivers'] as $driver): ?><tr>
-                                                                <td class="fw-semibold"><?= escape($driver['name']) ?></td>
-                                                                <td class="text-end font-monospace text-nowrap"><?= escape(format_duration($driver['seconds'])) ?></td>
-                                                                <td class="text-end"><?= (int) $driver['rounds'] ?></td>
-                                                                <td class="text-end"><?= (int) $driver['stints'] ?></td>
-                                                                <td class="text-end"><?= (int) $driver['pf'] ?></td>
-                                                                <td class="text-end"><?= (int) $driver['tf'] ?></td>
-                                                                <td class="text-end"><?= escape(number_format($driver['average_pf'], 2, '.', '')) ?></td>
-                                                                <td class="text-end"><?= escape(number_format($driver['average_tf'], 2, '.', '')) ?></td>
-                                                            </tr><?php endforeach; ?></tbody>
-                                                </table>
+                                            <div class="vstack gap-3">
+                                                <?php foreach ($kart['drivers'] as $driver): ?>
+                                                    <div class="border rounded p-3">
+                                                        <div class="fw-semibold mb-2"><?= escape($driver['name']) ?></div>
+                                                        <dl class="row mb-0 small">
+                                                            <dt class="col-7 fw-normal text-body-secondary">Fahrzeit</dt>
+                                                            <dd class="col-5 text-end font-monospace text-nowrap"><?= escape(format_duration($driver['seconds'])) ?></dd>
+                                                            <dt class="col-7 fw-normal text-body-secondary">Runden</dt>
+                                                            <dd class="col-5 text-end"><?= (int) $driver['rounds'] ?></dd>
+                                                            <dt class="col-7 fw-normal text-body-secondary">Stints</dt>
+                                                            <dd class="col-5 text-end"><?= (int) $driver['stints'] ?></dd>
+                                                            <dt class="col-7 fw-normal text-body-secondary">PF</dt>
+                                                            <dd class="col-5 text-end"><?= (int) $driver['pf'] ?></dd>
+                                                            <dt class="col-7 fw-normal text-body-secondary">TF</dt>
+                                                            <dd class="col-5 text-end"><?= (int) $driver['tf'] ?></dd>
+                                                            <dt class="col-7 fw-normal text-body-secondary">PF / Runde</dt>
+                                                            <dd class="col-5 text-end"><?= escape(number_format($driver['average_pf'], 2, '.', '')) ?></dd>
+                                                            <dt class="col-7 fw-normal text-body-secondary">TF / Runde</dt>
+                                                            <dd class="col-5 text-end"><?= escape(number_format($driver['average_tf'], 2, '.', '')) ?></dd>
+                                                        </dl>
+                                                    </div>
+                                                <?php endforeach; ?>
                                             </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
             </section>

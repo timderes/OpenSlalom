@@ -4,6 +4,7 @@
     const tabs = [...document.querySelectorAll('[data-training-tab]')];
     const panels = [...document.querySelectorAll('[data-training-panel]')];
     const tabStorageKey = `openslalom-tab:${window.location.pathname}`;
+    let selectedTabName = null;
 
     const selectTab = (name) => {
         const selectedTab = tabs.find((tab) => tab.dataset.trainingTab === name) || tabs[0];
@@ -18,7 +19,8 @@
         panels.forEach((panel) => {
             panel.hidden = panel.dataset.trainingPanel !== selectedTab.dataset.trainingTab;
         });
-        window.sessionStorage.setItem(tabStorageKey, selectedTab.dataset.trainingTab);
+        selectedTabName = selectedTab.dataset.trainingTab;
+        window.sessionStorage.setItem(tabStorageKey, selectedTabName);
     };
 
     tabs.forEach((tab) => {
@@ -69,6 +71,9 @@
         if (!enabled) return;
         timerId = window.setTimeout(() => {
             saveOpenDetails();
+            if (selectedTabName !== null) {
+                window.sessionStorage.setItem(tabStorageKey, selectedTabName);
+            }
             window.location.reload();
         }, seconds * 1000);
     };
