@@ -6,19 +6,19 @@
 - [x] admin-users.php
 - [x] error.php
 - [x] forgot-password.php
-- [ ] home.php
+- [x] home.php
 - [x] imprint.php
 - [x] layout.php
-- [ ] list-controls.php
+- [x] list-controls.php
 - [x] login.php
-- [ ] master-data-delete.php
-- [ ] master-data-form.php
-- [ ] master-data-list.php
+- [x] master-data-delete.php
+- [x] master-data-form.php
+- [x] master-data-list.php
 - [x] not-found.php
 - [x] privacy.php
-- [ ] register.php
-- [ ] reset-password.php
+- [x] register.php
+- [x] reset-password.php
 - [x] statistics.php
-- [ ] training-form.php
+- [x] training-form.php
 - [x] training.php
 - [x] trainings.php
