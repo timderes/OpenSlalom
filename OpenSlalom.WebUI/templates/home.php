@@ -4,27 +4,33 @@ declare(strict_types=1);
 
 ?>
 
-<div class="vstack gap-5">
-    <section class="row row-cols-lg-2 g-4">
-        <div class="col">
+<div class="vstack gap-5 gap-lg-5">
+    <section class="row align-items-center g-4 g-lg-5">
+        <div class="col-12 col-lg-6 order-1 order-lg-1">
             <p class="text-muted mb-0">Kart-Slalom digital organisiert</p>
-            <h1 class="display-4 fw-bold text-body-emphasis">Training steuern.<br>Leistung sichtbar machen.</h1>
-            <p class="lead">openSlalom verbindet Vorbereitung, doppelte Zeitnahme, Fehlererfassung, Auswertung und veröffentlichte Ergebnisse in einem durchgängigen Ablauf.</p>
-            <div class="mt-3 mb-5">
+            <h1 class="display-5 fw-bold text-body-emphasis">Training steuern.<br>Leistung sichtbar machen.</h1>
+            <p class="lead mb-4">openSlalom verbindet Vorbereitung, doppelte Zeitnahme, Fehlererfassung, Auswertung und veröffentlichte Ergebnisse in einem durchgängigen Ablauf.</p>
+            <div class="d-flex flex-column flex-sm-row align-items-stretch align-items-sm-center gap-2">
                 <a class="btn btn-primary" href="#funktionen">Funktionsumfang ansehen</a>
-                <a class="btn btn-link text-decoration-none" href="<?= escape(base_url('registrieren')) ?>"><i class="bi bi-arrow-right"></i> Konto registrieren</a>
+                <a class="btn btn-link text-decoration-none" href="<?= escape(base_url('registrieren')) ?>"><i class="bi bi-arrow-right me-1" aria-hidden="true"></i>Konto registrieren</a>
             </div>
         </div>
-        <div class="col">
+        <div class="col-12 col-lg-6 order-0 order-lg-2 text-center">
             <img class="img-fluid" src="<?= escape(base_url('assets/img/desktop-timing.svg')) ?>" alt="Illustration der Desktop-Zeitnahme mit zwei parallel laufenden Uhren">
-            <span class="spinner-grow spinner-grow-sm text-primary"></span> <span class="text-muted">Lokal erfassen. Sicher synchronisieren.</span>
+            <div class="small text-body-secondary mt-2"><span class="spinner-grow spinner-grow-sm text-primary me-1" aria-hidden="true"></span>Lokal erfassen. Sicher synchronisieren.</div>
         </div>
     </section>
 
-    <section class="text-center" aria-label="Kernfunktionen">
-        <span><b>2</b> parallele Zeitnahmen</span> &mdash;
-        <span><b>QR</b>-Codes erlauben direkten Zugang zu den Ergebnis- & Starterlisten</span> &mdash;
-        <span><b>Live</b> Trainingsdaten</span>
+    <section class="row row-cols-1 row-cols-sm-3 g-3 text-center" aria-label="Kernfunktionen">
+        <div class="col">
+            <div class="card card-body border-0 shadow-sm h-100"><strong class="text-primary fs-4">2</strong><span class="small text-body-secondary">parallele Zeitnahmen</span></div>
+        </div>
+        <div class="col">
+            <div class="card card-body border-0 shadow-sm h-100"><strong class="text-primary fs-4">QR</strong><span class="small text-body-secondary">direkter Zugang zu Ergebnis- und Starterlisten</span></div>
+        </div>
+        <div class="col">
+            <div class="card card-body border-0 shadow-sm h-100"><strong class="text-primary fs-4">Live</strong><span class="small text-body-secondary">Trainingsdaten während des Trainings</span></div>
+        </div>
     </section>
 
     <section class="row row-cols-1 row-cols-lg-2 g-3" aria-label="So funktioniert OpenSlalom">
@@ -71,8 +77,8 @@ declare(strict_types=1);
 
     <section id="funktionen">
         <p class="text-muted mb-0">Der Trainingsalltag in einer Anwendung</p>
-        <h2 class="display-4 fw-bold text-body-emphasis">Von der Starterliste bis zur veröffentlichten Runde.</h2>
-        <p class="lead mb-5">Die Desktop-App bleibt schnell und zuverlässig an der Strecke. Die WebUI macht Ergebnisse, Auswertungen und Verwaltung dort verfügbar, wo sie gebraucht werden.</p>
+        <h2 class="display-5 fw-bold text-body-emphasis">Von der Starterliste bis zur veröffentlichten Runde.</h2>
+        <p class="lead mb-4 mb-lg-5">Die Desktop-App bleibt schnell und zuverlässig an der Strecke. Die WebUI macht Ergebnisse, Auswertungen und Verwaltung dort verfügbar, wo sie gebraucht werden.</p>
 
         <div class="row">
             <div class="col-lg-2 display-4 d-flex flex-column align-items-lg-center font-monospace text-primary">
